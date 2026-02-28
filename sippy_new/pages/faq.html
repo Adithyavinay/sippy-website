@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="base" content="../" />
+  <title>Sippy — FAQ</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/product.css" />
+  <style>
+    .faq-hero { background: linear-gradient(135deg,var(--dark),var(--dark-mid)); padding:130px 0 70px; text-align:center; color:white; position:relative; overflow:hidden; }
+    .faq-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 60% 50%, rgba(201,146,58,0.12), transparent 60%); pointer-events:none; }
+    .faq-hero h1 { font-size:clamp(36px,5vw,60px); color:white; margin-bottom:10px; }
+    .faq-hero p { color:rgba(255,255,255,0.6); font-size:16px; max-width:480px; margin:0 auto; }
+    .faq-page-grid { display:grid; grid-template-columns:240px 1fr; gap:48px; align-items:start; }
+    .faq-categories { position:sticky; top:96px; }
+    .faq-cat-item { display:block; padding:12px 16px; border-radius:var(--radius-md); font-size:14px; font-weight:500; color:var(--muted); margin-bottom:4px; cursor:pointer; transition:all var(--transition); }
+    .faq-cat-item:hover, .faq-cat-item.active { background:var(--gold-pale); color:var(--gold); font-weight:600; }
+    .faq-section-group { margin-bottom:48px; }
+    .faq-section-group h3 { font-size:26px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--gold-pale); }
+    @media(max-width:768px){ .faq-page-grid { grid-template-columns:1fr; } .faq-categories { position:static; } }
+  </style>
+</head>
+<body>
+<script>document.addEventListener('DOMContentLoaded',()=>injectNav(''));</script>
+
+<div class="faq-hero">
+  <div class="container">
+    <div class="label" style="justify-content:center;">Frequently Asked Questions</div>
+    <h1>Got Questions?<br/>We've Got Answers.</h1>
+    <p>Everything you need to know about Sippy, ordering, shipping and more.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Home</a> › <span>FAQ</span></div>
+    <div class="faq-page-grid">
+      <div class="faq-categories">
+        <div class="faq-cat-item active" onclick="scrollTo('product')">📦 Product</div>
+        <div class="faq-cat-item" onclick="scrollTo('ordering')">🛒 Ordering</div>
+        <div class="faq-cat-item" onclick="scrollTo('shipping')">🚚 Shipping</div>
+        <div class="faq-cat-item" onclick="scrollTo('payment')">💳 Payment</div>
+        <div class="faq-cat-item" onclick="scrollTo('returns')">↩️ Returns</div>
+        <div class="faq-cat-item" onclick="scrollTo('support')">🛠️ Support</div>
+      </div>
+
+      <div class="faq-content">
+
+        <div class="faq-section-group" id="faq-product">
+          <h3>📦 Product Questions</h3>
+          <div class="faq-list">
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>What is Sippy?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Sippy is a smart, rechargeable portable electric kettle. It heats up to 300mL of water wirelessly — no power socket needed — to any temperature between 45°C and 100°C using a built-in rechargeable battery and LED temperature control.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>What is 316 Stainless Steel?</span><span class="faq-arrow">↓</span></button><div class="faq-a">316 is a medical-grade stainless steel alloy that contains molybdenum, making it far more corrosion-resistant and safer than the commonly used 304 grade. It's the same material used in surgical instruments and implants — completely safe for food and beverage contact.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>What capacity does Sippy have?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Sippy holds 300mL — enough for one generous cup of tea, coffee, a cup of noodles, or baby formula. It's sized for personal use and easy portability.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>What temperature range does it support?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Sippy heats from 45°C to 100°C (full boil). You can adjust the target temperature in increments using the +/− buttons on the LED panel. This makes it perfect for green tea (70–75°C), coffee (90–95°C), or plain boiling water (100°C).</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>How long does the battery last?</span><span class="faq-arrow">↓</span></button><div class="faq-a">The battery is designed for multiple full heats on a single charge. Exact count depends on target temperature and usage. We recommend charging overnight for a full day of use, similar to how you charge your phone.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I clean it?</span><span class="faq-arrow">↓</span></button><div class="faq-a">The wide mouth makes cleaning easy. Rinse with warm water after each use. For limescale removal, fill with equal parts water and white vinegar, heat to 70°C, let sit 30 minutes, then rinse thoroughly. Do not submerge the base (electronic component).</div></div>
+          </div>
+        </div>
+
+        <div class="faq-section-group" id="faq-ordering">
+          <h3>🛒 Ordering</h3>
+          <div class="faq-list">
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I place an order?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Click "Buy Now" in the navigation or visit our Checkout page. Fill in your delivery details, then click "Pay Securely" to complete payment via Razorpay. You'll get an email confirmation instantly.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>Can I order via WhatsApp?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Yes! You can WhatsApp us at +91 8985656181 with your name, address, and phone number. We'll confirm the order and share a payment link.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there only one variant?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Yes — Sippy currently comes in one variant: Warm Cream / Ivory, 300mL. We may introduce new colours in the future.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-section-group" id="faq-shipping">
+          <h3>🚚 Shipping & Delivery</h3>
+          <div class="faq-list">
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>Is shipping really free?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Yes! Free shipping on all orders across India. No minimum order, no hidden charges. ₹5,999 is the total amount you pay.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>How long does delivery take?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Orders are dispatched within 1–2 business days. Delivery takes 4–7 working days depending on your location. Metro cities are typically faster (3–5 days).</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>Do you deliver Pan India?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Yes, we deliver across all of India including tier-2 and tier-3 cities. If there's an issue with your pincode, contact us and we'll find a solution.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-section-group" id="faq-payment">
+          <h3>💳 Payment</h3>
+          <div class="faq-list">
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>What payment methods are accepted?</span><span class="faq-arrow">↓</span></button><div class="faq-a">We accept all payment methods via Razorpay: UPI (GPay, PhonePe, Paytm), Credit/Debit Cards (Visa, Mastercard, RuPay), Net Banking, Mobile Wallets, and EMI options on eligible cards.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>Is my payment information secure?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Absolutely. All payments are processed by Razorpay, which is PCI DSS compliant and used by thousands of businesses in India. Your card details are never stored on our servers.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>Is Cash on Delivery available?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Currently we accept online payments only via Razorpay. COD may be available in the future. For concerns, WhatsApp us at +91 8985656181.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-section-group" id="faq-returns">
+          <h3>↩️ Returns & Refunds</h3>
+          <div class="faq-list">
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>What is the return policy?</span><span class="faq-arrow">↓</span></button><div class="faq-a">We offer a 30-day satisfaction guarantee. If you're not happy with Sippy for any reason, contact us within 30 days of receiving your order for a full refund or replacement.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I initiate a return?</span><span class="faq-arrow">↓</span></button><div class="faq-a">Email us at smartkettlestore@gmail.com or WhatsApp +91 8985656181 with your order ID and reason for return. We'll arrange a pickup and process your refund within 5–7 business days.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-section-group" id="faq-support">
+          <h3>🛠️ Support</h3>
+          <div class="faq-list">
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I contact Sippy support?</span><span class="faq-arrow">↓</span></button><div class="faq-a">You can reach us via: Email — smartkettlestore@gmail.com | Phone / WhatsApp — +91 8985656181 | Or use the Contact form on our website. We respond within 4–6 hours on weekdays.</div></div>
+            <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span>My Sippy isn't heating. What do I do?</span><span class="faq-arrow">↓</span></button><div class="faq-a">First, make sure the battery is charged (connect to USB and check LED indicator). Ensure the minimum water level is met. If the issue persists, contact us — we'll troubleshoot or replace it under our guarantee.</div></div>
+          </div>
+        </div>
+
+        <div class="text-center" style="padding:40px 0 0;">
+          <p class="text-muted" style="font-size:16px;">Still have questions?</p>
+          <a href="contact.html" class="btn btn-primary mt-16">Contact Us →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/common.js"></script>
+<script>
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+function scrollTo(id) {
+  document.getElementById('faq-' + id)?.scrollIntoView({ behavior:'smooth', block:'start' });
+  document.querySelectorAll('.faq-cat-item').forEach(el => el.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

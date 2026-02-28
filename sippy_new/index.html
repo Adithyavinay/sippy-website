@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="base" content="" />
+  <title>Sippy — The Smart Portable Kettle | Home</title>
+  <meta name="description" content="Sippy is India's smartest rechargeable portable kettle. 316 SS, wireless heating, LED temp control. ₹5,999 free shipping." />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('home');
+    // marquee after nav
+    const bar = injectMarquee(['Wireless Rechargeable','316 Stainless Steel','LED Temperature Control','300mL Capacity','Food Grade Safe','Free Shipping India','30-Day Guarantee','Rapid Heating']);
+    document.querySelector('.hero-section').after(bar);
+  });
+</script>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-bg">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+  </div>
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="badge" style="margin-bottom:24px;">🇮🇳 Now Available in India</div>
+      <h1 class="hero-h1">Boil.<br/><em>Anywhere.</em><br/>Sip. Repeat.</h1>
+      <p class="hero-p">Meet Sippy — the rechargeable smart kettle that heats 300mL of water to your exact temperature. No plug. No compromise. Just hot water, whenever you want it.</p>
+      <div class="hero-price-block">
+        <div class="hero-price">₹5,999</div>
+        <div class="hero-price-sub">All taxes included · Free shipping</div>
+      </div>
+      <div class="hero-actions">
+        <button onclick="addToCart(1); window.location.href='pages/cart.html';" class="btn btn-gold btn-lg">Add to Cart →</button>
+        <a href="pages/product.html" class="btn btn-outline">Explore Product</a>
+      </div>
+      <div class="hero-trust-strip">
+        <span>⭐⭐⭐⭐⭐</span>
+        <span class="ht-sep"></span>
+        <span>316 Steel</span>
+        <span class="ht-sep"></span>
+        <span>Food Safe</span>
+        <span class="ht-sep"></span>
+        <span>Wireless</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-glow-ring"></div>
+      <img src="images/product-main.jpeg" alt="Sippy Smart Portable Kettle" class="hero-product-img" />
+      <div class="hero-float-card card-top">
+        <span class="fc-icon">🌡️</span>
+        <div><div class="fc-val">45°C – 100°C</div><div class="fc-label">Temperature Range</div></div>
+      </div>
+      <div class="hero-float-card card-bottom">
+        <span class="fc-icon">⚡</span>
+        <div><div class="fc-val">Wireless</div><div class="fc-label">Rechargeable</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">scroll to discover ↓</div>
+</section>
+
+<!-- WHY SIPPY -->
+<section class="section why-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="label">Why Choose Sippy</div>
+      <h2 style="font-size:clamp(32px,5vw,52px);">Hot water.<br/>Your rules. No outlet needed.</h2>
+    </div>
+    <div class="why-grid mt-48">
+      <div class="why-card reveal" data-delay="0">
+        <div class="why-ic">⚡</div>
+        <h3>Wireless Heating</h3>
+        <p>Fully rechargeable. Heats 300mL in minutes without any power socket. The freedom you deserve.</p>
+      </div>
+      <div class="why-card reveal" data-delay="80">
+        <div class="why-ic">🌡️</div>
+        <h3>Precise Temperature</h3>
+        <p>Live LED temperature display. Set 45°C to 100°C and Sippy hits it perfectly every time.</p>
+      </div>
+      <div class="why-card reveal" data-delay="160">
+        <div class="why-ic">🛡️</div>
+        <h3>Medical-Grade Steel</h3>
+        <p>316 stainless steel inner — same grade used in medical instruments. Zero plastic-water contact.</p>
+      </div>
+      <div class="why-card reveal" data-delay="240">
+        <div class="why-ic">✋</div>
+        <h3>Easy-Carry Handle</h3>
+        <p>Ergonomic handle, compact form, beautiful cream finish. Fits in any bag or on any desk.</p>
+      </div>
+      <div class="why-card reveal" data-delay="320">
+        <div class="why-ic">🧼</div>
+        <h3>Wide Mouth Design</h3>
+        <p>Easy to fill, easy to clean. The polished steel interior resists stains and odours permanently.</p>
+      </div>
+      <div class="why-card reveal" data-delay="400">
+        <div class="why-ic">☕</div>
+        <h3>Perfect Every Brew</h3>
+        <p>Green tea at 70°C, espresso at 95°C, noodles at 100°C. Perfect temperature, perfect cup.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT SNAPSHOT -->
+<section class="snapshot-section">
+  <div class="container snapshot-grid">
+    <div class="snap-img-col reveal">
+      <div class="snap-img-wrap">
+        <img src="images/product-detail.jpeg" alt="Sippy construction detail" class="snap-main-img" />
+        <div class="snap-badge">
+          <div class="sb-num">3</div>
+          <div class="sb-text">Layer<br/>Construction</div>
+        </div>
+      </div>
+    </div>
+    <div class="snap-text-col reveal" data-delay="120">
+      <div class="label">Built to Last</div>
+      <h2>Engineering Behind the Elegance</h2>
+      <p class="mt-16 text-muted">Sippy isn't just beautiful — it's built on serious engineering. Three distinct layers work together to heat fast, insulate long, and stay safe to touch.</p>
+      <div class="snap-layers mt-32">
+        <div class="snap-layer">
+          <div class="sl-num">01</div>
+          <div><h4>316 Stainless Steel Interior</h4><p>Medical-grade, rust-free. Your water only ever touches the safest material.</p></div>
+        </div>
+        <div class="snap-layer">
+          <div class="sl-num">02</div>
+          <div><h4>Thermal Insulation Layer</h4><p>Keeps heat in. Reduces energy use. Your water stays hot longer.</p></div>
+        </div>
+        <div class="snap-layer">
+          <div class="sl-num">03</div>
+          <div><h4>ABS Outer Shell</h4><p>Durable, cool-touch exterior. Safe to hold even when boiling inside.</p></div>
+        </div>
+      </div>
+      <a href="pages/product.html" class="btn btn-primary mt-32">Full Product Details →</a>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="section use-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="label">Made for Real Life</div>
+      <h2>Who Loves Sippy?</h2>
+    </div>
+    <div class="use-grid mt-48">
+      <div class="use-card reveal" data-delay="0"><span class="use-em">✈️</span><h4>Travellers</h4><p>Hotel kettles are gross. Sippy is yours, always clean, always ready.</p></div>
+      <div class="use-card reveal" data-delay="60"><span class="use-em">💼</span><h4>Professionals</h4><p>Hot tea or coffee at your desk, no kitchen run needed.</p></div>
+      <div class="use-card reveal" data-delay="120"><span class="use-em">🎓</span><h4>Students</h4><p>Instant noodles, study fuel, late-night coffee. Done.</p></div>
+      <div class="use-card reveal" data-delay="180"><span class="use-em">🧘</span><h4>Wellness Lovers</h4><p>Herbal teas at the exact temperature that unlocks flavour.</p></div>
+      <div class="use-card reveal" data-delay="240"><span class="use-em">🏕️</span><h4>Adventurers</h4><p>Hot drinks on hikes, camping trips, road trips, anywhere.</p></div>
+      <div class="use-card reveal" data-delay="300"><span class="use-em">👶</span><h4>New Parents</h4><p>Safe, precise formula temperature. Peace of mind at 3am.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip-section">
+  <div class="container cta-strip-inner">
+    <div class="cta-strip-text reveal">
+      <h2>Ready to sip smarter?</h2>
+      <p>Join thousands of happy customers across India.</p>
+    </div>
+    <div class="cta-strip-actions reveal" data-delay="100">
+      <div class="cta-price">₹5,999 <span>Free Shipping · All India</span></div>
+      <button onclick="addToCart(1); window.location.href='pages/cart.html';" class="btn btn-gold btn-lg">Add to Cart &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<script src="js/common.js"></script>
+</body>
+</html>

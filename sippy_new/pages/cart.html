@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="base" content="../" />
+  <title>Sippy — Cart</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/checkout.css" />
+  <style>
+    .cart-hero {
+      background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 100%);
+      padding: 80px 0 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-hero h1 { font-size: clamp(32px, 5vw, 52px); margin-top: 12px; }
+    .cart-hero p { color: var(--muted); margin-top: 8px; }
+
+    .cart-section { padding: 60px 0 80px; }
+    .cart-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .cart-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Cart Item Card */
+    .cart-item-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .cart-item-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: var(--cream-dark);
+      flex-shrink: 0;
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .cart-item-variant { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .cart-item-price { font-size: 22px; font-weight: 800; color: var(--gold); }
+    .cart-item-price-sub { font-size: 13px; color: var(--muted); }
+
+    .qty-row { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+    .qty-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--cream-dark);
+      font-size: 18px; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+      color: var(--dark);
+    }
+    .qty-btn:hover { border-color: var(--gold); color: var(--gold); background: #fff; }
+    .qty-val { font-size: 18px; font-weight: 700; min-width: 28px; text-align: center; }
+
+    .remove-btn {
+      background: none; border: none; color: #e05; font-size: 13px;
+      cursor: pointer; margin-left: auto; padding: 6px 10px;
+      border-radius: 8px; transition: background .2s;
+    }
+    .remove-btn:hover { background: #fff0f2; }
+
+    .empty-cart {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .empty-cart .ec-icon { font-size: 64px; margin-bottom: 16px; }
+    .empty-cart h3 { font-size: 24px; margin-bottom: 8px; }
+    .empty-cart p { color: var(--muted); margin-bottom: 28px; }
+
+    /* Summary Card */
+    .cart-summary-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      position: sticky;
+      top: 100px;
+    }
+    .cs-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .cs-line { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 15px; }
+    .cs-line .free-tag { color: #16a34a; font-weight: 700; }
+    .cs-divider { height: 1px; background: var(--border); margin: 16px 0; }
+    .cs-total { display: flex; justify-content: space-between; font-size: 20px; font-weight: 800; }
+    .cs-total span:last-child { color: var(--gold); }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold), #b8832f);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 16px 24px;
+      border-radius: 50px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(201,146,58,.35);
+    }
+    .checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,146,58,.45); }
+
+    .cs-trust { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .cs-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+
+    .continue-shopping {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--gold); font-weight: 600; font-size: 14px;
+      text-decoration: none; margin-bottom: 24px;
+      transition: gap .2s;
+    }
+    .continue-shopping:hover { gap: 12px; }
+
+    /* Cart count badge on nav */
+    .cart-count-badge {
+      background: var(--gold);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: 50%;
+      width: 18px; height: 18px;
+      display: inline-flex; align-items: center; justify-content: center;
+      position: absolute;
+      top: -6px; right: -8px;
+    }
+  </style>
+</head>
+<body>
+<script>document.addEventListener('DOMContentLoaded',()=>injectNav('cart'));</script>
+
+<!-- PAGE HERO -->
+<div class="cart-hero">
+  <div class="container">
+    <div class="label" style="justify-content:center;">Your Selection</div>
+    <h1>Your Cart 🛒</h1>
+    <p>Review your items and proceed to checkout</p>
+  </div>
+</div>
+
+<section class="cart-section">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a> › <a href="product.html">Product</a> › <span>Cart</span>
+    </div>
+
+    <div class="cart-grid" id="cartGrid">
+      <!-- LEFT: Cart Items -->
+      <div>
+        <a href="product.html" class="continue-shopping">← Continue Shopping</a>
+        <div id="cartItemsContainer">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- RIGHT: Summary -->
+      <div>
+        <div class="cart-summary-card" id="cartSummary">
+          <div class="cs-title">Order Summary</div>
+          <div class="cs-line"><span>Sippy Smart Portable Kettle</span><span id="summaryItemPrice">₹5,999</span></div>
+          <div class="cs-line"><span>Quantity</span><span id="summaryQty">1</span></div>
+          <div class="cs-line"><span>Shipping</span><span class="free-tag">FREE</span></div>
+          <div class="cs-line"><span>Taxes</span><span>Included</span></div>
+          <div class="cs-divider"></div>
+          <div class="cs-total"><span>Total</span><span id="summaryTotal">₹5,999</span></div>
+
+          <a href="checkout.html" class="checkout-btn" id="checkoutBtn">
+            Proceed to Checkout →
+          </a>
+          <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">
+            Secure checkout powered by Razorpay
+          </p>
+
+          <div class="cs-trust">
+            <div class="cs-trust-item"><span>🔒</span> 100% Secure Checkout</div>
+            <div class="cs-trust-item"><span>🚚</span> Free Delivery All India</div>
+            <div class="cs-trust-item"><span>↩️</span> 30-Day Easy Returns</div>
+            <div class="cs-trust-item"><span>⭐</span> 5-Star Rated Product</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/common.js"></script>
+<script>
+  const UNIT_PRICE = 5999;
+
+  function getCart() {
+    try { return JSON.parse(localStorage.getItem('sippy_cart') || '{"qty":0}'); }
+    catch(e) { return {qty:0}; }
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('sippy_cart', JSON.stringify(cart));
+    updateNavCartBadge();
+  }
+
+  function updateNavCartBadge() {
+    const cart = getCart();
+    const badge = document.getElementById('navCartBadge');
+    if (badge) badge.textContent = cart.qty || '';
+  }
+
+  function renderCart() {
+    const cart = getCart();
+    const container = document.getElementById('cartItemsContainer');
+
+    if (!cart.qty || cart.qty === 0) {
+      container.innerHTML = `
+        <div class="empty-cart">
+          <div class="ec-icon">🛒</div>
+          <h3>Your cart is empty</h3>
+          <p>Add Sippy to your cart to get started</p>
+          <a href="product.html" class="btn btn-gold btn-lg">Shop Now →</a>
+        </div>
+      `;
+      document.getElementById('checkoutBtn').style.pointerEvents = 'none';
+      document.getElementById('checkoutBtn').style.opacity = '0.5';
+    } else {
+      const itemTotal = UNIT_PRICE * cart.qty;
+      container.innerHTML = `
+        <div class="cart-item-card">
+          <img src="../images/product-main.jpeg" alt="Sippy" class="cart-item-img" />
+          <div class="cart-item-info">
+            <div class="cart-item-name">Sippy Smart Portable Kettle</div>
+            <div class="cart-item-variant">Cream / Ivory · 300mL · Wireless Rechargeable</div>
+            <div class="cart-item-price">₹${itemTotal.toLocaleString('en-IN')}</div>
+            <div class="cart-item-price-sub">Incl. all taxes · Free shipping</div>
+            <div class="qty-row">
+              <button class="qty-btn" onclick="changeQty(-1)">−</button>
+              <span class="qty-val" id="qtyVal">${cart.qty}</span>
+              <button class="qty-btn" onclick="changeQty(1)">+</button>
+              <button class="remove-btn" onclick="removeItem()">🗑 Remove</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('checkoutBtn').style.pointerEvents = '';
+      document.getElementById('checkoutBtn').style.opacity = '';
+    }
+
+    updateSummary(cart.qty || 0);
+  }
+
+  function updateSummary(qty) {
+    const total = UNIT_PRICE * qty;
+    document.getElementById('summaryQty').textContent = qty;
+    document.getElementById('summaryItemPrice').textContent = '₹' + (UNIT_PRICE).toLocaleString('en-IN');
+    document.getElementById('summaryTotal').textContent = qty > 0 ? '₹' + total.toLocaleString('en-IN') : '₹0';
+  }
+
+  function changeQty(delta) {
+    const cart = getCart();
+    cart.qty = Math.max(0, (cart.qty || 0) + delta);
+    cart.total = UNIT_PRICE * cart.qty;
+    saveCart(cart);
+    renderCart();
+  }
+
+  function removeItem() {
+    saveCart({qty: 0, total: 0});
+    renderCart();
+    showToast('Item removed from cart', 'error');
+  }
+
+  // Pass quantity to checkout via sessionStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCart();
+    updateNavCartBadge();
+
+    // Store cart info for checkout page
+    document.getElementById('checkoutBtn').addEventListener('click', (e) => {
+      const cart = getCart();
+      if (!cart.qty) { e.preventDefault(); return; }
+      sessionStorage.setItem('sippy_checkout_qty', cart.qty);
+      sessionStorage.setItem('sippy_checkout_total', cart.total || UNIT_PRICE * cart.qty);
+    });
+  });
+</script>
+</body>
+</html>

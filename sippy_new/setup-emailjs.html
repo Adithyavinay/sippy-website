@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sippy — EmailJS Setup Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: #FDFAF5; color: #1C1410; line-height: 1.6; }
+    a { color: #C9923A; }
+    .header {
+      background: #1C1410; color: white; padding: 28px 0;
+      text-align: center; border-bottom: 3px solid #C9923A;
+    }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; }
+    .logo span { color: #C9923A; }
+    .header-sub { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .hero-strip {
+      background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 12px;
+      padding: 18px 24px; margin: 32px 0;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .hs-icon { font-size: 24px; flex-shrink: 0; }
+    .hs-text h4 { font-size: 15px; font-weight: 700; color: #92400E; margin-bottom: 4px; }
+    .hs-text p { font-size: 14px; color: #78350F; }
+
+    .steps-wrap { padding: 40px 0 60px; }
+    .step-block {
+      background: white; border: 1px solid #E0D5C5;
+      border-radius: 20px; padding: 32px; margin-bottom: 24px;
+      position: relative;
+    }
+    .step-block.done { border-color: #22C55E; }
+    .step-num-badge {
+      position: absolute; top: -16px; left: 28px;
+      background: #1C1410; color: white;
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700;
+    }
+    .step-block.done .step-num-badge { background: #22C55E; }
+    .step-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+    .step-icon { font-size: 32px; }
+    .step-head h3 { font-size: 20px; font-weight: 700; color: #1C1410; margin-bottom: 4px; }
+    .step-head p { font-size: 14px; color: #9A8472; }
+    .step-body { font-size: 14px; }
+
+    .instruction-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .instruction-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px; background: #F9F6F1; border-radius: 10px;
+      border-left: 3px solid #C9923A;
+    }
+    .il-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #C9923A; color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .il-text { font-size: 14px; color: #3A2B20; }
+    .il-text strong { color: #1C1410; }
+    .il-text code {
+      background: #1C1410; color: #E8B96A;
+      padding: 2px 8px; border-radius: 4px; font-size: 12px;
+      font-family: monospace;
+    }
+
+    .screenshot-box {
+      border: 2px dashed #E0D5C5; border-radius: 12px;
+      padding: 20px; margin: 16px 0;
+      background: #FDFAF5; text-align: center;
+    }
+    .screenshot-box .sb-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: #9A8472; margin-bottom: 12px;
+    }
+    .mock-dashboard {
+      background: white; border-radius: 10px; padding: 16px;
+      border: 1px solid #E0D5C5; text-align: left; font-size: 13px;
+    }
+    .mock-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid #F0E8D8;
+    }
+    .mock-row:last-child { border: none; }
+    .mock-key { color: #9A8472; }
+    .mock-val {
+      font-family: monospace; font-size: 12px;
+      background: #FEF3C7; color: #92400E;
+      padding: 3px 10px; border-radius: 6px; font-weight: 700;
+    }
+    .mock-val.highlight {
+      background: #C9923A; color: white;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.7;} }
+    .copy-hint {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #C9923A; color: white;
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; margin-top: 10px;
+    }
+
+    .link-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1C1410; color: white;
+      padding: 12px 22px; border-radius: 50px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: background 0.2s;
+      margin-top: 12px;
+    }
+    .link-btn:hover { background: #C9923A; }
+
+    .template-builder {
+      border: 1px solid #E0D5C5; border-radius: 12px; overflow: hidden; margin: 16px 0;
+    }
+    .tb-header {
+      background: #1C1410; color: white; padding: 12px 18px;
+      font-size: 13px; font-weight: 600;
+    }
+    .tb-body { padding: 18px; font-size: 13px; }
+    .tb-field { margin-bottom: 14px; }
+    .tb-field label { display: block; font-size: 11px; font-weight: 700; color: #9A8472; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+    .tb-field .tf-val {
+      background: #F9F6F1; border: 1px solid #E0D5C5; border-radius: 8px;
+      padding: 10px 14px; font-size: 13px; color: #3A2B20; font-family: monospace;
+      white-space: pre-wrap; line-height: 1.5;
+    }
+
+    /* LIVE CONFIG FORM */
+    .config-form { background: #1C1410; border-radius: 20px; padding: 36px; margin-bottom: 32px; }
+    .config-form h3 { font-size: 22px; font-weight: 700; color: white; margin-bottom: 6px; }
+    .config-form p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 24px; }
+    .cf-field { margin-bottom: 16px; }
+    .cf-field label { display: block; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase; }
+    .cf-field input {
+      width: 100%; padding: 12px 16px;
+      background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 10px; color: white; font-size: 14px; font-family: monospace;
+      outline: none; transition: border-color 0.2s;
+    }
+    .cf-field input:focus { border-color: #C9923A; }
+    .cf-field input::placeholder { color: rgba(255,255,255,0.25); }
+    .generate-btn {
+      width: 100%; padding: 16px; border-radius: 50px; border: none;
+      background: #C9923A; color: white; font-size: 16px; font-weight: 700;
+      font-family: inherit; cursor: pointer; margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .generate-btn:hover { background: #B07C2A; }
+    .output-box {
+      display: none; background: #0d0a07; border-radius: 12px;
+      padding: 20px; margin-top: 20px; position: relative;
+    }
+    .output-box.show { display: block; }
+    .output-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .output-code { font-family: monospace; font-size: 13px; color: #E8B96A; white-space: pre-wrap; line-height: 1.7; }
+    .copy-all-btn {
+      display: block; width: 100%; margin-top: 16px; padding: 12px;
+      background: white; color: #1C1410; border: none; border-radius: 10px;
+      font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .copy-all-btn:hover { background: #E8B96A; }
+
+    .success-banner {
+      display: none; background: #DCFCE7; border: 1px solid #86EFAC;
+      border-radius: 12px; padding: 16px 20px;
+      color: #15803D; font-weight: 600; font-size: 14px;
+      text-align: center; margin-top: 16px;
+    }
+    .success-banner.show { display: block; }
+
+    .divider-strip { height: 2px; background: linear-gradient(to right, transparent, #E0D5C5, transparent); margin: 40px 0; }
+
+    .test-section { background: #F0E8D8; border-radius: 20px; padding: 32px; margin-bottom: 40px; }
+    .test-section h3 { font-size: 22px; margin-bottom: 12px; }
+    .test-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+    .tr-icon { font-size: 20px; flex-shrink: 0; }
+    .tr-text { font-size: 14px; color: #3A2B20; }
+    .tr-text strong { color: #1C1410; }
+
+    footer { background: #1C1410; text-align: center; padding: 28px; color: rgba(255,255,255,0.4); font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">Sippy<span>.</span></div>
+  <p class="header-sub">EmailJS Setup Guide — Fix "Template ID not found" Error</p>
+</div>
+
+<div class="container">
+
+  <!-- WARNING STRIP -->
+  <div class="hero-strip">
+    <div class="hs-icon">⚠️</div>
+    <div class="hs-text">
+      <h4>You're seeing "Template ID not found" because the template IDs in js/emailjs-init.js are still placeholders.</h4>
+      <p>Follow the steps below to get your real IDs from EmailJS and paste them in. It takes about 5 minutes.</p>
+    </div>
+  </div>
+
+  <div class="steps-wrap">
+
+    <!-- STEP 1 -->
+    <div class="step-block" id="s1">
+      <div class="step-num-badge">1</div>
+      <div class="step-head">
+        <div class="step-icon">🔑</div>
+        <div>
+          <h3>Get Your Public Key</h3>
+          <p>Your account's unique key — used to authenticate requests</p>
+        </div>
+      </div>
+      <div class="step-body">
+        <ul class="instruction-list">
+          <li><div class="il-num">a</div><div class="il-text">Go to <a href="https://dashboard.emailjs.com/admin/account" target="_blank"><strong>dashboard.emailjs.com/admin/account</strong></a></div></li>
+          <li><div class="il-num">b</div><div class="il-text">Scroll down to the <strong>"API Keys"</strong> section</div></li>
+          <li><div class="il-num">c</div><div class="il-text">Copy the value under <strong>"Public Key"</strong>. It looks like: <code>aBcDeFgHiJkLmNoPqR</code></div></li>
+        </ul>
+        <div class="screenshot-box">
+          <div class="sb-label">What you'll see on the page</div>
+          <div class="mock-dashboard">
+            <div class="mock-row"><span class="mock-key">Public Key</span><span class="mock-val highlight">aBcDeFgHiJkLmNoPqR ← COPY THIS</span></div>
+            <div class="mock-row"><span class="mock-key">Private Key</span><span class="mock-val">••••••••••••••• (do NOT copy)</span></div>
+          </div>
+        </div>
+        <a href="https://dashboard.emailjs.com/admin/account" target="_blank" class="link-btn">Open EmailJS Account Page →</a>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-block" id="s2">
+      <div class="step-num-badge">2</div>
+      <div class="step-head">
+        <div class="step-icon">📬</div>
+        <div>
+          <h3>Get Your Service ID</h3>
+          <p>Your connected Gmail account's service identifier</p>
+        </div>
+      </div>
+      <div class="step-body">
+        <ul class="instruction-list">
+          <li><div class="il-num">a</div><div class="il-text">Go to <a href="https://dashboard.emailjs.com/admin" target="_blank"><strong>dashboard.emailjs.com/admin</strong></a></div></li>
+          <li><div class="il-num">b</div><div class="il-text">Click <strong>"Email Services"</strong> in the left sidebar</div></li>
+          <li>
+            <div class="il-num">c</div>
+            <div class="il-text">
+              If you haven't connected Gmail yet: Click <strong>"Add New Service"</strong> → Choose <strong>Gmail</strong> → Connect <code>smartkettlestore@gmail.com</code><br/><br/>
+              If Gmail is already connected: you'll see it listed.
+            </div>
+          </li>
+          <li><div class="il-num">d</div><div class="il-text">Copy the <strong>Service ID</strong> shown under your service name. Looks like: <code>service_abc12345</code></div></li>
+        </ul>
+        <div class="screenshot-box">
+          <div class="sb-label">What you'll see on the page</div>
+          <div class="mock-dashboard">
+            <div class="mock-row"><span class="mock-key">📧 Gmail (smartkettlestore@gmail.com)</span><span class="mock-val highlight">service_abc12345 ← COPY</span></div>
+          </div>
+        </div>
+        <a href="https://dashboard.emailjs.com/admin" target="_blank" class="link-btn">Open Email Services →</a>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-block" id="s3">
+      <div class="step-num-badge">3</div>
+      <div class="step-head">
+        <div class="step-icon">📝</div>
+        <div>
+          <h3>Create Two Email Templates & Get Their IDs</h3>
+          <p>You need one template for order notifications, one for confirmations</p>
+        </div>
+      </div>
+      <div class="step-body">
+        <ul class="instruction-list">
+          <li><div class="il-num">a</div><div class="il-text">Go to <a href="https://dashboard.emailjs.com/admin/templates" target="_blank"><strong>dashboard.emailjs.com/admin/templates</strong></a></div></li>
+          <li><div class="il-num">b</div><div class="il-text">Click <strong>"Create New Template"</strong></div></li>
+        </ul>
+
+        <p style="margin: 20px 0 10px; font-weight: 600; font-size: 15px;">📋 Template 1 — Order Notification (copy exactly):</p>
+        <div class="template-builder">
+          <div class="tb-header">Template 1 — "Order Notification" (to store owner)</div>
+          <div class="tb-body">
+            <div class="tb-field"><label>Template Name</label><div class="tf-val">Order Notification</div></div>
+            <div class="tb-field"><label>To Email</label><div class="tf-val">smartkettlestore@gmail.com</div></div>
+            <div class="tb-field"><label>Subject</label><div class="tf-val">{{subject}}</div></div>
+            <div class="tb-field"><label>Content / Body (plain text is fine)</label><div class="tf-val">{{message}}</div></div>
+          </div>
+        </div>
+        <p style="font-size:13px; color:#9A8472; margin-bottom:20px;">👆 Click Save. Note the <strong>Template ID</strong> shown — looks like <code>template_abc12345</code></p>
+
+        <p style="margin: 20px 0 10px; font-weight: 600; font-size: 15px;">📋 Template 2 — Customer Confirmation (copy exactly):</p>
+        <div class="template-builder">
+          <div class="tb-header">Template 2 — "Customer Confirmation" (to buyer)</div>
+          <div class="tb-body">
+            <div class="tb-field"><label>Template Name</label><div class="tf-val">Customer Confirmation</div></div>
+            <div class="tb-field"><label>To Email</label><div class="tf-val">{{to_email}}</div></div>
+            <div class="tb-field"><label>Subject</label><div class="tf-val">{{subject}}</div></div>
+            <div class="tb-field"><label>Content / Body (plain text is fine)</label><div class="tf-val">Hi {{to_name}},
+
+{{message}}
+
+Thanks,
+Team Sippy</div></div>
+          </div>
+        </div>
+        <p style="font-size:13px; color:#9A8472;">👆 Click Save. Note the <strong>Template ID</strong> — looks like <code>template_xyz98765</code></p>
+
+        <div class="screenshot-box" style="margin-top: 20px;">
+          <div class="sb-label">Where to find Template IDs on the templates page</div>
+          <div class="mock-dashboard">
+            <div class="mock-row"><span class="mock-key">Order Notification</span><span class="mock-val highlight">template_abc12345 ← Template 1 ID</span></div>
+            <div class="mock-row"><span class="mock-key">Customer Confirmation</span><span class="mock-val highlight">template_xyz98765 ← Template 2 ID</span></div>
+          </div>
+        </div>
+        <a href="https://dashboard.emailjs.com/admin/templates" target="_blank" class="link-btn">Open Email Templates →</a>
+      </div>
+    </div>
+
+    <!-- STEP 4 — LIVE CONFIG GENERATOR -->
+    <div class="step-block" id="s4">
+      <div class="step-num-badge">4</div>
+      <div class="step-head">
+        <div class="step-icon">⚙️</div>
+        <div>
+          <h3>Paste Your IDs Below → Get Ready-to-Copy Code</h3>
+          <p>Enter your IDs here and we'll generate the exact code to paste into emailjs-init.js</p>
+        </div>
+      </div>
+      <div class="step-body">
+        <div class="config-form">
+          <h3>🔧 Config Generator</h3>
+          <p>Paste your EmailJS IDs here — we'll generate the exact code to copy into js/emailjs-init.js</p>
+
+          <div class="cf-field">
+            <label>Public Key (from Step 1)</label>
+            <input type="text" id="inp_pubkey" placeholder="e.g. aBcDeFgHiJkLmNoPqR" oninput="generateCode()" />
+          </div>
+          <div class="cf-field">
+            <label>Service ID (from Step 2)</label>
+            <input type="text" id="inp_service" placeholder="e.g. service_abc12345" oninput="generateCode()" />
+          </div>
+          <div class="cf-field">
+            <label>Template 1 ID — Order Notification (from Step 3)</label>
+            <input type="text" id="inp_order" placeholder="e.g. template_abc12345" oninput="generateCode()" />
+          </div>
+          <div class="cf-field">
+            <label>Template 2 ID — Customer Confirmation (from Step 3)</label>
+            <input type="text" id="inp_enquiry" placeholder="e.g. template_xyz98765" oninput="generateCode()" />
+          </div>
+
+          <div class="output-box" id="outputBox">
+            <div class="output-label">📋 Copy this → Paste into js/emailjs-init.js (replace lines 20–23)</div>
+            <div class="output-code" id="outputCode"></div>
+            <button class="copy-all-btn" onclick="copyCode()">📋 Copy to Clipboard</button>
+          </div>
+          <div class="success-banner" id="copySuccess">✅ Copied! Now open js/emailjs-init.js and paste it in.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-block" id="s5">
+      <div class="step-num-badge">5</div>
+      <div class="step-head">
+        <div class="step-icon">📂</div>
+        <div>
+          <h3>Paste Into emailjs-init.js</h3>
+          <p>Open the file in any text editor and replace the placeholder values</p>
+        </div>
+      </div>
+      <div class="step-body">
+        <ul class="instruction-list">
+          <li><div class="il-num">a</div><div class="il-text">Open the file <code>js/emailjs-init.js</code> in Notepad, VS Code, or any text editor</div></li>
+          <li><div class="il-num">b</div><div class="il-text">Find these 4 lines near the top (around line 20):
+<br/><br/>
+<code>window.EMAILJS_PUBLIC_KEY       = 'YOUR_PUBLIC_KEY';</code><br/>
+<code>window.EMAILJS_SERVICE_ID       = 'YOUR_SERVICE_ID';</code><br/>
+<code>window.EMAILJS_ORDER_TEMPLATE   = 'YOUR_ORDER_TEMPLATE_ID';</code><br/>
+<code>window.EMAILJS_ENQUIRY_TEMPLATE = 'YOUR_ENQUIRY_TEMPLATE_ID';</code>
+          </div></li>
+          <li><div class="il-num">c</div><div class="il-text">Replace the quoted placeholder text with your actual IDs from the generator above</div></li>
+          <li><div class="il-num">d</div><div class="il-text">Save the file (<strong>Ctrl+S</strong> / <strong>Cmd+S</strong>)</div></li>
+          <li><div class="il-num">e</div><div class="il-text">Upload/re-deploy the updated file to your hosting</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TEST SECTION -->
+    <div class="test-section">
+      <h3>🧪 How to Test It's Working</h3>
+      <div class="test-row"><div class="tr-icon">1️⃣</div><div class="tr-text">Open <strong>pages/checkout.html</strong> in your browser</div></div>
+      <div class="test-row"><div class="tr-icon">2️⃣</div><div class="tr-text">Fill in a test order with your own email address</div></div>
+      <div class="test-row"><div class="tr-icon">3️⃣</div><div class="tr-text">Complete payment via Razorpay (use test card: <strong>4111 1111 1111 1111</strong>, any future date, any CVV)</div></div>
+      <div class="test-row"><div class="tr-icon">4️⃣</div><div class="tr-text">Check <strong>smartkettlestore@gmail.com</strong> — you should receive the order notification</div></div>
+      <div class="test-row"><div class="tr-icon">5️⃣</div><div class="tr-text">Check your test email inbox — you should receive the customer confirmation</div></div>
+      <div class="test-row"><div class="tr-icon">✅</div><div class="tr-text"><strong>If emails arrive — you're done!</strong> Remove this setup-emailjs.html from your hosting if you want.</div></div>
+    </div>
+
+    <!-- TROUBLESHOOT -->
+    <div class="step-block">
+      <div class="step-head">
+        <div class="step-icon">🔧</div>
+        <div><h3>Still Having Issues?</h3><p>Common problems and solutions</p></div>
+      </div>
+      <div class="step-body">
+        <ul class="instruction-list">
+          <li>
+            <div class="il-num">❌</div>
+            <div class="il-text">
+              <strong>"The template ID not found"</strong><br/>
+              → Your template ID in emailjs-init.js doesn't match what's on EmailJS dashboard.<br/>
+              → Go to <a href="https://dashboard.emailjs.com/admin/templates" target="_blank">dashboard → Templates</a> and copy the exact ID shown.
+            </div>
+          </li>
+          <li>
+            <div class="il-num">❌</div>
+            <div class="il-text">
+              <strong>"The service ID not found"</strong><br/>
+              → Your service hasn't been created yet, or the ID is wrong.<br/>
+              → Go to <a href="https://dashboard.emailjs.com/admin" target="_blank">dashboard → Email Services</a> and create/confirm your Gmail service.
+            </div>
+          </li>
+          <li>
+            <div class="il-num">❌</div>
+            <div class="il-text">
+              <strong>Emails not arriving in inbox</strong><br/>
+              → Check your spam/junk folder.<br/>
+              → In EmailJS dashboard → Email Services → click your service → Test it.
+            </div>
+          </li>
+          <li>
+            <div class="il-num">❌</div>
+            <div class="il-text">
+              <strong>"Daily email limit exceeded"</strong><br/>
+              → Free plan allows 200 emails/month. Upgrade at emailjs.com if needed.
+            </div>
+          </li>
+          <li>
+            <div class="il-num">💬</div>
+            <div class="il-text">
+              <strong>Still stuck?</strong><br/>
+              WhatsApp us at <a href="https://wa.me/918985656181">+91 8985656181</a> or email <a href="mailto:smartkettlestore@gmail.com">smartkettlestore@gmail.com</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  Sippy · smartkettlestore@gmail.com · +91 8985656181
+</footer>
+
+<script>
+function generateCode() {
+  const pk  = document.getElementById('inp_pubkey').value.trim();
+  const svc = document.getElementById('inp_service').value.trim();
+  const tOrd = document.getElementById('inp_order').value.trim();
+  const tEnq = document.getElementById('inp_enquiry').value.trim();
+
+  if (!pk || !svc || !tOrd || !tEnq) {
+    document.getElementById('outputBox').classList.remove('show');
+    return;
+  }
+
+  const code =
+`window.EMAILJS_PUBLIC_KEY       = '${pk}';
+window.EMAILJS_SERVICE_ID       = '${svc}';
+window.EMAILJS_ORDER_TEMPLATE   = '${tOrd}';
+window.EMAILJS_ENQUIRY_TEMPLATE = '${tEnq}';`;
+
+  document.getElementById('outputCode').textContent = code;
+  document.getElementById('outputBox').classList.add('show');
+  document.getElementById('copySuccess').classList.remove('show');
+}
+
+function copyCode() {
+  const code = document.getElementById('outputCode').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    document.getElementById('copySuccess').classList.add('show');
+    setTimeout(() => document.getElementById('copySuccess').classList.remove('show'), 4000);
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = code;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    document.getElementById('copySuccess').classList.add('show');
+  });
+}
+</script>
+</body>
+</html>

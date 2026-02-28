@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="base" content="../" />
+  <title>Sippy — Gallery</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/gallery.css" />
+</head>
+<body>
+<script>document.addEventListener('DOMContentLoaded',()=>injectNav('gallery'));</script>
+
+<div class="page-hero" style="background: linear-gradient(135deg, rgba(28,20,16,0.82) 0%, rgba(58,43,32,0.88) 100%), url('../images/product-main.jpeg') center/cover no-repeat; position:relative;">
+  <div class="container">
+    <div class="label">Gallery</div>
+    <h1>See Sippy in Every Light</h1>
+    <p>From the engineering inside to the lifestyle outside — Sippy in full detail.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a> › <span>Gallery</span>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="gallery-featured reveal">
+      <div class="gal-feat-img">
+        <img src="../images/product-main.jpeg" alt="Sippy main product shot" />
+        <div class="gal-feat-overlay">
+          <h3>The Hero Shot</h3>
+          <p>Sippy in its iconic cream finish with LED display glowing at 45°C</p>
+        </div>
+      </div>
+      <div class="gal-feat-side">
+        <div class="gal-side-card reveal" data-delay="80">
+          <img src="../images/product-lifestyle.jpeg" alt="Sippy lifestyle" />
+          <div class="gal-card-overlay"><h4>Handle Design</h4><p>Easy carry anywhere</p></div>
+        </div>
+        <div class="gal-side-card reveal" data-delay="160">
+          <img src="../images/product-interio.jpeg" alt="Sippy interior" />
+          <div class="gal-card-overlay"><h4>316 Steel Interior</h4><p>Medical-grade purity</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="gallery-grid mt-48">
+      <div class="gal-item reveal" data-delay="0" onclick="openLightbox('../images/product-detail.jpeg','3-Layer Construction — ABS outer · Insulation · 316 SS inner')">
+        <img src="../images/product-detail.jpeg" alt="Sippy construction detail" />
+        <div class="gal-item-overlay">
+          <h4>3-Layer Construction</h4>
+          <p>ABS · Insulation · 316 Steel</p>
+          <span class="gal-zoom">⊕ View</span>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-delay="80" onclick="openLightbox('../images/product-interio.jpeg','Food Grade Interior — 316 Stainless Steel, polished and pure')">
+        <img src="../images/product-interio.jpeg" alt="Sippy interior" />
+        <div class="gal-item-overlay">
+          <h4>Food Grade Interior</h4>
+          <p>Polished 316 Stainless Steel</p>
+          <span class="gal-zoom">⊕ View</span>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-delay="160" onclick="openLightbox('../images/product-lifestyle.jpeg','Easy Carry — Ergonomic handle design for one-finger carry')">
+        <img src="../images/product-lifestyle.jpeg" alt="Sippy lifestyle" />
+        <div class="gal-item-overlay">
+          <h4>Easy Carry Handle</h4>
+          <p>One-finger ergonomic carry</p>
+          <span class="gal-zoom">⊕ View</span>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-delay="240" onclick="openLightbox('../images/product-main.jpeg','Sippy — 300mL Rapid Heating at 45°C and above')">
+        <img src="../images/product-main.jpeg" alt="Sippy main" />
+        <div class="gal-item-overlay">
+          <h4>LED Smart Display</h4>
+          <p>Live temperature readout</p>
+          <span class="gal-zoom">⊕ View</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE CALLOUTS -->
+    <div class="gal-callouts mt-48">
+      <div class="gal-callout reveal" data-delay="0">
+        <div class="gc-icon">🌡️</div>
+        <h4>Precise Temperature</h4>
+        <p>LED display shows exact water temperature in real time. Set from 45°C to 100°C.</p>
+      </div>
+      <div class="gal-callout reveal" data-delay="80">
+        <div class="gc-icon">⚡</div>
+        <h4>Rapid Wireless Heating</h4>
+        <p>No plug required. Built-in rechargeable battery heats water in minutes anywhere.</p>
+      </div>
+      <div class="gal-callout reveal" data-delay="160">
+        <div class="gc-icon">🛡️</div>
+        <h4>Safe Inside & Out</h4>
+        <p>Cool-touch ABS exterior, pure 316 steel interior. Safe to hold, safe to drink from.</p>
+      </div>
+      <div class="gal-callout reveal" data-delay="240">
+        <div class="gc-icon">✋</div>
+        <h4>Built to Travel</h4>
+        <p>Compact 300mL form with carry handle. Fits in your bag, always ready when you are.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-48 reveal">
+      <h2 style="font-size:clamp(28px,4vw,48px);">Like what you see?</h2>
+      <p class="text-muted mt-16" style="font-size:16px;">Get Sippy delivered to your door — ₹5,999, free shipping.</p>
+      <a href="checkout.html" class="btn btn-gold btn-lg mt-32">Order Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lb-inner" onclick="event.stopPropagation()">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <img id="lbImg" src="" alt="" />
+    <p id="lbCaption"></p>
+  </div>
+</div>
+
+<script src="../js/common.js"></script>
+<script>
+function openLightbox(src, caption) {
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbCaption').textContent = caption;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="base" content="../" />
+  <title>Sippy — Product Details</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/product.css" />
+</head>
+<body>
+<script>document.addEventListener('DOMContentLoaded',()=>injectNav('product'));</script>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="label">The Product</div>
+    <h1>Sippy Smart Portable Kettle</h1>
+    <p>Every detail crafted for the modern lifestyle. Wireless. Precise. Beautiful.</p>
+  </div>
+</div>
+
+<!-- PRODUCT MAIN SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a> › <span>Product</span>
+    </div>
+    <div class="prod-main-grid">
+      <!-- IMAGE GALLERY -->
+      <div class="prod-gallery">
+        <div class="prod-main-img-wrap">
+          <img src="../images/product-main.jpeg" alt="Sippy main view" class="prod-main-img" id="mainImg" />
+        </div>
+        <div class="prod-thumbs">
+          <div class="thumb active" onclick="switchImg('../images/product-main.jpeg',this)">
+            <img src="../images/product-main.jpeg" alt="Main view" />
+          </div>
+          <div class="thumb" onclick="switchImg('../images/product-lifestyle.jpeg',this)">
+            <img src="../images/product-lifestyle.jpeg" alt="Lifestyle" />
+          </div>
+          <div class="thumb" onclick="switchImg('../images/product-interio.jpeg',this)">
+            <img src="../images/product-interio.jpeg" alt="Interior" />
+          </div>
+          <div class="thumb" onclick="switchImg('../images/product-detail.jpeg',this)">
+            <img src="../images/product-detail.jpeg" alt="Detail" />
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT INFO -->
+      <div class="prod-info">
+        <div class="badge" style="margin-bottom:16px;">🇮🇳 Available in India</div>
+        <h1 class="prod-title">Sippy</h1>
+        <p class="prod-subtitle">Rechargeable Smart Portable Kettle</p>
+        <div class="prod-price-row">
+          <span class="prod-price">₹5,999</span>
+          <span class="prod-price-note">Incl. all taxes · Free shipping</span>
+        </div>
+
+        <div class="prod-highlights">
+          <div class="prod-hl"><span class="hl-dot"></span> 316 Medical-Grade Stainless Steel interior</div>
+          <div class="prod-hl"><span class="hl-dot"></span> 300mL capacity — perfect cup every time</div>
+          <div class="prod-hl"><span class="hl-dot"></span> Wireless rechargeable — no socket needed</div>
+          <div class="prod-hl"><span class="hl-dot"></span> LED temperature display, 45°C to 100°C</div>
+          <div class="prod-hl"><span class="hl-dot"></span> Ergonomic carry handle</div>
+          <div class="prod-hl"><span class="hl-dot"></span> 30-day satisfaction guarantee</div>
+        </div>
+
+        <div class="prod-actions">
+          <button onclick="addToCart(1);" class="btn btn-gold btn-lg w-full" style="justify-content:center;">Add to Cart — ₹5,999</button>
+          <a href="cart.html" class="btn btn-outline w-full" style="justify-content:center;margin-top:12px;">🛒 View Cart →</a>
+          <a href="https://wa.me/918985656181" target="_blank" class="btn btn-outline w-full" style="justify-content:center;margin-top:12px;color:#25D366;border-color:#25D366;">💬 Order via WhatsApp</a>
+        </div>
+
+        <div class="prod-trust-row">
+          <div class="ptr"><span>🔒</span> Secure Payment</div>
+          <div class="ptr"><span>🚚</span> Free Delivery</div>
+          <div class="ptr"><span>↩️</span> 30-Day Returns</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS TABLE -->
+<section class="section" style="background:var(--cream-dark);padding:80px 0;">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="label">Technical Specifications</div>
+      <h2>Everything You Need to Know</h2>
+    </div>
+    <div class="specs-wrap mt-48 reveal" data-delay="100">
+      <table class="specs-table">
+        <tbody>
+          <tr><td class="spec-k">Product Name</td><td class="spec-v">Sippy Smart Portable Kettle</td></tr>
+          <tr><td class="spec-k">Capacity</td><td class="spec-v">300 mL</td></tr>
+          <tr><td class="spec-k">Inner Material</td><td class="spec-v">316 Stainless Steel (Medical Grade)</td></tr>
+          <tr><td class="spec-k">Outer Material</td><td class="spec-v">ABS Plastic (Food Safe)</td></tr>
+          <tr><td class="spec-k">Insulation</td><td class="spec-v">Double-wall insulation layer</td></tr>
+          <tr><td class="spec-k">Heating</td><td class="spec-v">Electric, Wireless Rechargeable</td></tr>
+          <tr><td class="spec-k">Temperature Range</td><td class="spec-v">45°C – 100°C</td></tr>
+          <tr><td class="spec-k">Temperature Control</td><td class="spec-v">Adjustable via +/− buttons</td></tr>
+          <tr><td class="spec-k">Display</td><td class="spec-v">LED Digital Temperature Display</td></tr>
+          <tr><td class="spec-k">Power Source</td><td class="spec-v">Built-in Rechargeable Battery</td></tr>
+          <tr><td class="spec-k">Carry Design</td><td class="spec-v">Ergonomic Carry Handle</td></tr>
+          <tr><td class="spec-k">Colour</td><td class="spec-v">Warm Cream / Ivory</td></tr>
+          <tr><td class="spec-k">Food Safety</td><td class="spec-v">Food Grade Certified</td></tr>
+          <tr><td class="spec-k">Warranty</td><td class="spec-v">30-Day Satisfaction Guarantee</td></tr>
+          <tr><td class="spec-k">Price</td><td class="spec-v">₹5,999 (incl. taxes, free shipping)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE DEEP-DIVE -->
+<section class="section feat-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="label">Feature Deep Dive</div>
+      <h2>What Makes Sippy Special</h2>
+    </div>
+
+    <div class="feat-block mt-48">
+      <div class="feat-img reveal"><img src="../images/product-interio.jpeg" alt="Interior stainless steel" /></div>
+      <div class="feat-text reveal" data-delay="120">
+        <div class="label">Interior</div>
+        <h3>316 Medical-Grade Steel</h3>
+        <p>Most portable kettles use 304 steel or even cheaper grades. Sippy uses 316 — the same material found in surgical instruments. It has superior corrosion resistance and never leaches heavy metals, even with acidic beverages like lemon tea or coffee. Your water is always pure.</p>
+      </div>
+    </div>
+
+    <div class="feat-block feat-reverse mt-48">
+      <div class="feat-img reveal"><img src="../images/product-detail.jpeg" alt="Detail construction" /></div>
+      <div class="feat-text reveal" data-delay="120">
+        <div class="label">Construction</div>
+        <h3>3-Layer Smart Build</h3>
+        <p>Steel inner → Thermal insulation → ABS outer. The insulation layer traps heat inside while the outer shell stays cool to the touch. This means you can safely hold Sippy even when boiling water is inside — no burns, no worries.</p>
+      </div>
+    </div>
+
+    <div class="feat-block mt-48">
+      <div class="feat-img reveal"><img src="../images/product-lifestyle.jpeg" alt="Lifestyle carry" /></div>
+      <div class="feat-text reveal" data-delay="120">
+        <div class="label">Portability</div>
+        <h3>Designed to Go Everywhere</h3>
+        <p>The ergonomic handle isn't just aesthetic — it's engineered for one-finger carry. The slim 300mL form fits in most bags and backpacks. Whether you're on a train, in a meeting, or camping under the stars, Sippy comes along effortlessly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container container-sm">
+    <div class="text-center reveal">
+      <div class="label">FAQ</div>
+      <h2>Common Questions</h2>
+    </div>
+    <div class="faq-list mt-48">
+      <div class="faq-item reveal" data-delay="0">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How long does the battery last?</span><span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">Sippy's rechargeable battery is designed for multiple full heats on a single charge. Exact duration depends on your usage temperature and frequency. Charge it like your phone — overnight — and it's ready for a full day of use.</div>
+      </div>
+      <div class="faq-item reveal" data-delay="60">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Is it safe to use every day?</span><span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">Absolutely. All materials in contact with water (316 stainless steel) are food-grade certified and used in medical instruments. The product meets food safety standards. It's designed for daily, long-term use.</div>
+      </div>
+      <div class="faq-item reveal" data-delay="120">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How do I clean Sippy?</span><span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">The wide-mouth opening makes cleaning easy. Rinse with warm water after use. For descaling, use a solution of water and white vinegar once a month. Do not submerge the base unit containing the electronics.</div>
+      </div>
+      <div class="faq-item reveal" data-delay="180">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How do I charge it?</span><span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">Sippy charges via the included charging cable. Connect to any USB power source — wall adapter, power bank, laptop, or car charger. The LED display indicates charging status.</div>
+      </div>
+      <div class="faq-item reveal" data-delay="240">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What is the return policy?</span><span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">We offer a 30-day satisfaction guarantee. If you're not completely happy with your Sippy, contact us within 30 days of receiving it and we'll arrange a return and full refund. No questions asked.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="prod-cta-section">
+  <div class="container text-center">
+    <h2 class="reveal" style="color:white;font-size:clamp(32px,5vw,56px);">Ready to try Sippy?</h2>
+    <p class="reveal text-muted" data-delay="80" style="color:rgba(255,255,255,0.55);margin-top:12px;font-size:16px;">₹5,999 · Free shipping · 30-day guarantee</p>
+    <button onclick="addToCart(1); window.location.href='cart.html';" class="btn btn-gold btn-lg mt-32 reveal" data-delay="160">Add to Cart →</button>
+  </div>
+</section>
+
+<script src="../js/common.js"></script>
+<script>
+function switchImg(src, el) {
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
