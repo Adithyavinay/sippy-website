@@ -154,7 +154,7 @@ p { line-height: 1.75; }
 
 /* ===== NAVBAR ===== */
 #nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
   height: 72px;
   background: rgba(253,250,245,0.93);
   backdrop-filter: blur(14px);
