@@ -264,6 +264,7 @@ const RAZORPAY_KEY_ID = 'rzp_live_SLs36Po5adJfjr'; // ← Replace this
 const VALID_PROMO = 'SIPPY25';
 const ORIGINAL_PRICE = 7999;
 const DISCOUNTED_PRICE = 5999;
+const DISPLAY_PRICE = 7999;
 window._promoApplied = false;
 
 function applyPromo() {
@@ -304,7 +305,7 @@ function applyPromo() {
 // ===== DYNAMIC CART DATA =====
 (function() {
   const qty = parseInt(sessionStorage.getItem('sippy_checkout_qty') || '1');
-  const total = qty * 5999;
+  const total = qty * 7999;
   const totalStr = '₹' + total.toLocaleString('en-IN');
   // Update summary
   const qtyEl = document.querySelector('.os-qty');
@@ -317,7 +318,8 @@ function applyPromo() {
   if (priceEl) priceEl.textContent = totalStr;
   if (totalLineEl) totalLineEl.textContent = totalStr;
   if (subtotalEl) subtotalEl.textContent = totalStr;
-  if (btnTxtEl) btnTxtEl.textContent = '🔒 Pay Securely — ' + totalStr;
+  if (btnTxtEl) btnTxtEl.textContent = '🔒 Enter Promo Code to Get Offer Price';
+  window._checkoutTotal = 7999 * qty;
   // Store for payment
   window._checkoutQty = qty;
   window._checkoutTotal = total;
@@ -383,6 +385,12 @@ function getFormData() {
 
 function placeOrder() {
   if (!validateForm()) return;
+  if (!window._promoApplied) {
+    showToast('🎟️ Please enter promo code SIPPY25 to get the offer price!', 'error');
+    document.getElementById('promoCode').focus();
+    document.getElementById('promoCode').style.borderColor = 'var(--gold)';
+    return;
+  }
 
   const btn = document.getElementById('placeOrderBtn');
   const btnText = document.getElementById('pobText');
