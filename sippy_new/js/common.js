@@ -392,10 +392,35 @@ function injectMarquee(items) {
   return bar;
 }
 
+// ===== PROMO BANNER =====
+function injectPromoBanner() {
+  const banner = document.createElement('div');
+  banner.id = 'promoBanner';
+  banner.style.cssText = `
+    background: linear-gradient(90deg, #1C1410, #3a2510, #1C1410);
+    color: #fff;
+    text-align: center;
+    padding: 10px 40px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1000;
+    font-family: 'Outfit', sans-serif;
+  `;
+  banner.innerHTML = `
+    🎉 LIMITED OFFER &nbsp;|&nbsp; Use code 
+    <span style="background:#C9923A;color:#fff;padding:2px 10px;border-radius:4px;font-weight:800;letter-spacing:1px;margin:0 4px;">SIPPY25</span>
+    for <strong style="color:#C9923A;">25% OFF</strong> &nbsp;|&nbsp; Original Price <s style="opacity:0.7;">₹7,999</s> → Now only <strong style="color:#C9923A;">₹5,999</strong> 🔥
+  `;
+  document.body.prepend(banner);
+}
+
 // ===== AUTO-INIT ON DOM READY =====
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   injectChatbot();
   injectFooter();
   updateNavCartBadge();
+  injectPromoBanner();
 });
