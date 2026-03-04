@@ -60,7 +60,7 @@ function injectNav(activePage) {
   // Inject promo banner FIRST, then nav below it
   const promoBanner = document.createElement('div');
   promoBanner.id = 'promoBanner';
-  promoBanner.style.cssText = 'background:linear-gradient(90deg,#1C1410,#3a2510,#1C1410) !important;color:#fff !important;text-align:center !important;padding:12px 16px !important;font-size:13px !important;font-weight:600 !important;letter-spacing:0.5px !important;z-index:99999 !important;width:100% !important;box-sizing:border-box !important;display:block !important;visibility:visible !important;opacity:1 !important;position:relative !important;top:0 !important;left:0 !important;margin:0 !important;';
+  promoBanner.style.cssText = 'background:linear-gradient(90deg,#1C1410,#3a2510,#1C1410);color:#fff;text-align:center;padding:10px 16px;font-size:13px;font-weight:600;letter-spacing:0.5px;width:100%;box-sizing:border-box;display:block;position:sticky;top:0;z-index:99999;';
   promoBanner.innerHTML = '🎉 LIMITED OFFER &nbsp;|&nbsp; Use code <span style="background:#C9923A;color:#fff;padding:2px 10px;border-radius:4px;font-weight:800;letter-spacing:1px;margin:0 4px;">SIPPY25</span> for <strong style="color:#C9923A;">25% OFF</strong> &nbsp;|&nbsp; Original Price <s style="opacity:0.7;">₹7,999</s> → Now only <strong style="color:#C9923A;">₹5,999</strong> 🔥';
   document.body.prepend(nav);
   document.body.prepend(promoBanner);
