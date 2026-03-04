@@ -58,6 +58,8 @@ function injectNav(activePage) {
     </div>
   `;
   document.body.prepend(nav);
+const existingBanner = document.getElementById('promoBanner');
+if (existingBanner) document.body.insertBefore(existingBanner, nav);
   document.getElementById('navBurger').addEventListener('click', () => {
     document.getElementById('navMobile').classList.toggle('open');
   });
