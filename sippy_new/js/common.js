@@ -137,224 +137,60 @@ let chatHistory = [];
 
 const SIPPY_AI = {
   greet: [
-    "Hi! 👋 Welcome to Sippy! I'm your AI assistant. Ask me anything about our smart kettle!",
+    "Hi! 👋 Welcome to Sippy! I'm your assistant. Ask me anything about our smart kettle!",
     "Hello! 😊 Great to have you here! How can I help you with Sippy today?",
     "Hey there! 👋 I'm Sippy's assistant. What would you like to know?"
   ],
   price: [
-    "Sippy is originally priced at ₹7,999 but with promo code **SIPPY25** you get 25% OFF — bringing it to just ₹5,999! 🎉
-
-✅ All taxes included
-✅ FREE shipping all India
-✅ No hidden charges
-
-Just enter SIPPY25 at checkout!",
-    "Great news! Use promo code **SIPPY25** at checkout for 25% off! 🏷️
-
-Original: ~~₹7,999~~ → You pay: ₹5,999
-
-FREE shipping included!"
+    "Sippy is originally ₹7,999 but use promo code SIPPY25 for 25% OFF — just ₹5,999! 🎉\n\n✅ All taxes included\n✅ FREE shipping all India\n✅ No hidden charges\n\nEnter SIPPY25 at checkout!",
+    "Use promo code SIPPY25 at checkout for 25% off! 🏷️\n\nOriginal: ₹7,999 → You pay: ₹5,999 (save ₹2,000!)\n\nFREE shipping included!"
   ],
   promo: [
-    "Your promo code is **SIPPY25** 🎉
-
-Enter it at checkout to get 25% OFF!
-
-₹7,999 → ₹5,999 (save ₹2,000!)
-
-Don't miss it — limited time offer! 🔥"
+    "Your promo code is SIPPY25 🎉\n\nEnter it at checkout to get 25% OFF!\n\n₹7,999 → ₹5,999 (save ₹2,000!)\n\nLimited time offer — don't miss it! 🔥"
   ],
   product: [
-    "Sippy is India's smartest rechargeable portable kettle! 🫖
-
-⚡ 100% wireless — no socket needed
-🌡️ 45°C to 100°C temperature control
-📱 LED live temperature display
-🛡️ 316 Medical-Grade Stainless Steel
-💧 300mL — perfect cup every time
-
-Perfect for travel, office, home & outdoors!",
+    "Sippy is India's smartest rechargeable portable kettle! 🫖\n\n⚡ 100% wireless — no socket needed\n🌡️ 45°C to 100°C temperature control\n📱 LED live temperature display\n🛡️ 316 Medical-Grade Stainless Steel\n💧 300mL — perfect cup every time\n\nPerfect for travel, office, home & outdoors!"
   ],
   material: [
-    "Sippy is built with 3 premium layers 🛡️
-
-🔩 Inner: 316 Medical-Grade Stainless Steel (same as surgical instruments!)
-🌡️ Middle: Thermal insulation layer
-🏠 Outer: Cool-touch ABS shell
-
-Your water NEVER touches plastic. 100% food safe!"
+    "Sippy is built with 3 premium layers 🛡️\n\n🔩 Inner: 316 Medical-Grade Stainless Steel\n🌡️ Middle: Thermal insulation layer\n🏠 Outer: Cool-touch ABS shell\n\nYour water NEVER touches plastic. 100% food safe!"
   ],
   temperature: [
-    "Sippy heats from 45°C to 100°C 🌡️
-
-Perfect for:
-☕ Coffee/Espresso: 95°C
-🍵 Green tea: 70°C
-🍼 Baby formula: 60°C
-🍜 Instant noodles: 100°C
-
-LED display shows live temperature in real time!"
+    "Sippy heats from 45°C to 100°C 🌡️\n\nPerfect for:\n☕ Coffee/Espresso: 95°C\n🍵 Green tea: 70°C\n🍼 Baby formula: 60°C\n🍜 Instant noodles: 100°C\n\nLED display shows live temperature in real time!"
   ],
   shipping: [
-    "Shipping is completely FREE all across India! 🚚
-
-📦 Dispatched: 1-2 business days
-🏠 Delivered: 4-7 working days
-📱 SMS tracking after dispatch
-🇮🇳 Available pan-India
-
-No extra charges — included in ₹5,999!"
+    "Shipping is completely FREE all across India! 🚚\n\n📦 Dispatched: 1-2 business days\n🏠 Delivered: 4-7 working days\n📱 SMS tracking after dispatch\n\nNo extra charges — included in ₹5,999!"
   ],
   order: [
-    "Ordering Sippy is super easy! 🛒
-
-1️⃣ Click 'Add to Cart'
-2️⃣ Go to Cart & review
-3️⃣ Click 'Proceed to Checkout'
-4️⃣ Fill delivery details
-5️⃣ Enter code **SIPPY25** for 25% off!
-6️⃣ Pay securely via Razorpay
-
-Done in under 2 minutes! ⚡"
+    "Ordering Sippy is super easy! 🛒\n\n1️⃣ Click Add to Cart\n2️⃣ Go to Cart & review\n3️⃣ Click Proceed to Checkout\n4️⃣ Fill delivery details\n5️⃣ Enter code SIPPY25 for 25% off!\n6️⃣ Pay securely via Razorpay\n\nDone in under 2 minutes! ⚡"
   ],
   payment: [
-    "We accept all major payment methods via Razorpay 💳
-
-• UPI (PhonePe, GPay, Paytm)
-• Credit & Debit Cards
-• Net Banking
-• Wallets
-• EMI options
-
-100% secure & encrypted. PCI DSS compliant! 🔒"
+    "We accept all major payment methods via Razorpay 💳\n\n• UPI (PhonePe, GPay, Paytm)\n• Credit & Debit Cards\n• Net Banking\n• Wallets\n• EMI options\n\n100% secure & encrypted! 🔒"
   ],
   returns: [
-    "We stand behind Sippy 100%! 💯
-
-🔄 30-day satisfaction guarantee
-💰 Full refund, no questions asked
-📦 Contact us within 30 days
-🔧 Manufacturing defects covered
-
-We want you to love your Sippy — if not, we'll make it right!"
+    "We stand behind Sippy 100%! 💯\n\n🔄 30-day satisfaction guarantee\n💰 Full refund, no questions asked\n📦 Contact us within 30 days\n\nWe want you to love your Sippy — if not, we'll make it right!"
   ],
   contact: [
-    "Our support team is always happy to help! 😊
-
-📧 smartkettlestore@gmail.com
-📞 +91 89856 56181
-💬 WhatsApp: wa.me/918985656181
-
-🕐 Mon-Sat, 9am-7pm IST
-⚡ Reply within 4-6 hours"
+    "Our support team is always happy to help! 😊\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\n🕐 Mon-Sat, 9am-7pm IST\n⚡ Reply within 4-6 hours"
   ],
   cleaning: [
-    "Cleaning Sippy is super easy! 🧼
-
-✅ Rinse with warm water after use
-✅ Wide-mouth design for easy access
-✅ 316 steel resists stains & odours
-✅ Monthly: water + white vinegar for descaling
-
-⚠️ Don't submerge the base electronics!"
+    "Cleaning Sippy is super easy! 🧼\n\n✅ Rinse with warm water after use\n✅ Wide-mouth design for easy access\n✅ 316 steel resists stains & odours\n✅ Monthly: water + white vinegar for descaling\n\n⚠️ Don't submerge the base electronics!"
   ],
   battery: [
-    "Sippy charges just like your phone! ⚡
-
-🔌 Charges via USB cable
-🔋 Full charge in a few hours
-💧 Heats 300mL multiple times per charge
-
-Completely wireless — no socket needed anywhere!"
+    "Sippy charges just like your phone! ⚡\n\n🔌 Charges via USB cable\n🔋 Full charge in a few hours\n💧 Heats 300mL multiple times per charge\n\nCompletely wireless — no socket needed anywhere!"
   ],
   compare: [
-    "Sippy stands out from regular kettles! 🏆
-
-✅ 100% wireless (no socket!)
-✅ 316 medical-grade steel
-✅ Precise temperature control
-✅ Compact & portable
-✅ LED live display
-
-Most kettles need a socket and give you no temperature control. Sippy gives you full freedom!"
+    "Sippy stands out from regular kettles! 🏆\n\n✅ 100% wireless (no socket!)\n✅ 316 medical-grade steel\n✅ Precise temperature control\n✅ Compact & portable\n✅ LED live display\n\nMost kettles need a socket and give no temperature control. Sippy gives you full freedom!"
   ],
   thanks: [
-    "You're welcome! 😊 Happy to help. Is there anything else you'd like to know about Sippy? 🫖",
+    "You're welcome! 😊 Is there anything else you'd like to know about Sippy? 🫖",
     "My pleasure! 🎉 Feel free to ask anything else!",
     "Anytime! 😊 Let me know if you have more questions!"
   ],
   default: [
-    "I'm not sure about that, but our support team can help! 😊\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\n🕐 Mon-Sat, 9am-7pm IST\n\nOr ask me about pricing, features, shipping or offers!",
-    "That's beyond what I can answer right now! 🙏 Please reach out to our team:\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\nWe reply within 4-6 hours! ⚡",
+    "I'm not sure about that, but our support team can help! 😊\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\n🕐 Mon-Sat, 9am-7pm IST",
+    "That's beyond what I can answer! 🙏 Please reach out to our team:\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\nWe reply within 4-6 hours! ⚡"
   ]
 };
-
-function getAIResponse(text) {
-  const t = text.toLowerCase();
-  
-  // Greetings
-  if (/^(hi|hello|hey|hii|helo|good morning|good afternoon|good evening|namaste|sup|what'?s up)/i.test(t.trim())) {
-    return rand(SIPPY_AI.greet);
-  }
-  // Thanks
-  if (t.includes('thank') || t.includes('thanks') || t.includes('thx') || t.includes('ty ')) {
-    return rand(SIPPY_AI.thanks);
-  }
-  // Promo code
-  if (t.includes('promo') || t.includes('coupon') || t.includes('discount') || t.includes('code') || t.includes('offer') || t.includes('sippy25')) {
-    return rand(SIPPY_AI.promo);
-  }
-  // Price
-  if (t.includes('price') || t.includes('cost') || t.includes('₹') || t.includes('rs') || t.includes('rupee') || t.includes('how much') || t.includes('costly') || t.includes('cheap') || t.includes('expensive')) {
-    return rand(SIPPY_AI.price);
-  }
-  // Battery/charging
-  if (t.includes('battery') || t.includes('charg') || t.includes('usb') || t.includes('power') || t.includes('electric')) {
-    return rand(SIPPY_AI.battery);
-  }
-  // Temperature
-  if (t.includes('temp') || t.includes('heat') || t.includes('degree') || t.includes('celsius') || t.includes('hot') || t.includes('boil') || t.includes('warm')) {
-    return rand(SIPPY_AI.temperature);
-  }
-  // Material/safety
-  if (t.includes('material') || t.includes('steel') || t.includes('safe') || t.includes('bpa') || t.includes('plastic') || t.includes('build') || t.includes('made of') || t.includes('quality')) {
-    return rand(SIPPY_AI.material);
-  }
-  // Shipping
-  if (t.includes('ship') || t.includes('deliver') || t.includes('dispatch') || t.includes('track') || t.includes('days') || t.includes('arrive') || t.includes('reach')) {
-    return rand(SIPPY_AI.shipping);
-  }
-  // Payment
-  if (t.includes('pay') || t.includes('upi') || t.includes('card') || t.includes('razorpay') || t.includes('gpay') || t.includes('phonepe') || t.includes('emi') || t.includes('net banking')) {
-    return rand(SIPPY_AI.payment);
-  }
-  // Order
-  if (t.includes('order') || t.includes('buy') || t.includes('purchase') || t.includes('cart') || t.includes('checkout') || t.includes('how to get')) {
-    return rand(SIPPY_AI.order);
-  }
-  // Returns
-  if (t.includes('return') || t.includes('refund') || t.includes('warranty') || t.includes('guarantee') || t.includes('replace') || t.includes('broken') || t.includes('damage')) {
-    return rand(SIPPY_AI.returns);
-  }
-  // Cleaning
-  if (t.includes('clean') || t.includes('wash') || t.includes('maintain') || t.includes('care')) {
-    return rand(SIPPY_AI.cleaning);
-  }
-  // Contact
-  if (t.includes('contact') || t.includes('support') || t.includes('help') || t.includes('phone') || t.includes('email') || t.includes('whatsapp') || t.includes('call')) {
-    return rand(SIPPY_AI.contact);
-  }
-  // Compare
-  if (t.includes('compar') || t.includes('better') || t.includes('vs') || t.includes('difference') || t.includes('why') || t.includes('worth')) {
-    return rand(SIPPY_AI.compare);
-  }
-  // Product info
-  if (t.includes('sippy') || t.includes('kettle') || t.includes('product') || t.includes('what is') || t.includes('tell me') || t.includes('about') || t.includes('feature') || t.includes('wireless')) {
-    return rand(SIPPY_AI.product);
-  }
-  
-  return rand(SIPPY_AI.default);
-}
 
 function rand(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
