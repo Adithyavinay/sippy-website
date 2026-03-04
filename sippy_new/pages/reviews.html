@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="base" content="../" />
+  <title>Sippy — Customer Reviews</title>
+  <link rel="stylesheet" href="../css/global.css" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D88G42HS1W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D88G42HS1W');
+  </script>
+  <style>
+
+    /* ===== HERO ===== */
+    .reviews-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-mid) 100%);
+      padding: 130px 0 70px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .reviews-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(201,146,58,0.12), transparent 60%);
+      pointer-events: none;
+    }
+    .reviews-hero .label { color: var(--gold-light); justify-content: center; }
+    .reviews-hero .label::before,
+    .reviews-hero .label::after { background: var(--gold-light); }
+    .reviews-hero h1 { font-size: clamp(36px,5vw,60px); color: white; margin-bottom: 12px; }
+    .reviews-hero p { color: rgba(255,255,255,0.6); font-size: 16px; max-width: 480px; margin: 0 auto 36px; }
+    .rating-summary {
+      display: inline-flex; align-items: center; gap: 20px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-xl);
+      padding: 20px 36px;
+    }
+    .rating-big { font-size: 56px; font-weight: 800; color: white; line-height: 1; font-family: 'Cormorant Garamond', serif; }
+    .rating-details { text-align: left; }
+    .stars-gold { color: #F59E0B; font-size: 24px; letter-spacing: 3px; }
+    .rating-count { color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 4px; }
+    .rating-verified { color: #4ADE80; font-size: 12px; font-weight: 600; margin-top: 4px; }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--gold);
+      padding: 24px 0;
+    }
+    .stats-bar .container {
+      display: flex; justify-content: space-around; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 800; color: white; font-family: 'Cormorant Garamond', serif; line-height: 1; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 4px; font-weight: 500; }
+
+    /* ===== CAROUSEL ===== */
+    .carousel-section { padding: 90px 0 70px; background: var(--cream); overflow: hidden; }
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-head h2 { font-size: clamp(28px,4vw,48px); }
+    .section-head p { color: var(--muted); font-size: 16px; margin-top: 12px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    .carousel-wrap { position: relative; overflow: hidden; }
+    .carousel-wrap::before,
+    .carousel-wrap::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
+    }
+    .carousel-wrap::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+    .carousel-wrap::after  { right: 0; background: linear-gradient(to left,  var(--cream), transparent); }
+
+    .carousel-track {
+      display: flex; gap: 24px;
+      width: max-content;
+      animation: slide-left 35s linear infinite;
+    }
+    .carousel-track:hover { animation-play-state: paused; }
+
+    @keyframes slide-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .review-card {
+      width: 320px; flex-shrink: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition), transform var(--transition);
+      cursor: default;
+    }
+    .review-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .review-stars { color: #F59E0B; font-size: 17px; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text {
+      font-size: 14px; line-height: 1.75; color: var(--dark-mid);
+      font-style: italic; margin-bottom: 20px;
+    }
+    .review-text::before { content: '\201C'; font-size: 20px; color: var(--gold); font-style: normal; }
+    .review-text::after  { content: '\201D'; font-size: 20px; color: var(--gold); font-style: normal; }
+    .review-footer { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .review-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .review-name  { font-size: 14px; font-weight: 700; color: var(--dark); }
+    .review-city  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .review-badge {
+      display: inline-block;
+      background: #DCFCE7; color: #16A34A;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 20px; margin-top: 4px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+
+    /* ===== SUBMIT FORM SECTION ===== */
+    .submit-section { padding: 90px 0; background: var(--cream-dark); }
+    .submit-section .section-head p { max-width: 520px; }
+
+    .review-form-wrap {
+      max-width: 680px; margin: 0 auto;
+    }
+    .review-form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Star picker */
+    .star-picker { display: flex; gap: 10px; margin-top: 4px; }
+    .star-picker span {
+      font-size: 36px; cursor: pointer;
+      color: var(--border); transition: color 0.15s, transform 0.15s;
+      user-select: none; line-height: 1;
+    }
+    .star-picker span.lit  { color: #F59E0B; }
+    .star-picker span:hover { transform: scale(1.2); }
+
+    .form-hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* Success state */
+    .success-state {
+      display: none; text-align: center; padding: 48px 24px;
+    }
+    .success-state .success-icon { font-size: 64px; margin-bottom: 20px; display: block; }
+    .success-state h3 { font-size: 32px; margin-bottom: 10px; }
+    .success-state p  { color: var(--muted); font-size: 15px; line-height: 1.75; max-width: 320px; margin: 0 auto 28px; }
+
+    @media(max-width: 640px) {
+      .review-form-card { padding: 28px 20px; }
+      .rating-summary { flex-direction: column; gap: 12px; text-align: center; padding: 20px 24px; }
+      .rating-details { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="reviews-hero">
+  <div class="container">
+    <div class="label">Customer Reviews</div>
+    <h1>What Our Customers Say</h1>
+    <p>Real reviews from real Sippy owners across India 🇮🇳</p>
+    <div class="rating-summary">
+      <div class="rating-big">4.9</div>
+      <div class="rating-details">
+        <div class="stars-gold">★★★★★</div>
+        <div class="rating-count">Based on 124 reviews</div>
+        <div class="rating-verified">✅ Verified Purchases Only</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">Average Rating</div></div>
+    <div class="stat-item"><div class="stat-num">124+</div><div class="stat-label">Happy Customers</div></div>
+    <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Would Recommend</div></div>
+    <div class="stat-item"><div class="stat-num">30</div><div class="stat-label">Day Money Back</div></div>
+  </div>
+</div>
+
+<!-- CAROUSEL -->
+<section class="carousel-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">Verified Reviews</div>
+      <h2>Loved Across India 🇮🇳</h2>
+      <p>Join thousands of happy customers who boil smarter every day</p>
+    </div>
+  </div>
+
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Best purchase of 2024! I travel a lot for work and Sippy has been a lifesaver. Hot coffee at the exact temperature, anywhere. No more bad hotel room kettles!</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#C9923A;">R</div>
+          <div>
+            <div class="review-name">Rahul Sharma</div>
+            <div class="review-city">📍 Mumbai, Maharashtra</div>
+            <div class="review-badge">✅ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I'm a green tea person and getting the exact 70°C has completely changed my tea game. The LED display is so satisfying to watch. Worth every single rupee!</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#7A5C3E;">P</div>
+          <div>
+            <div class="review-name">Priya Nair</div>
+            <div class="review-city">📍 Bangalore, Karnataka</div>
+            <div class="review-badge">✅ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">As a new parent, making formula at 3am was so stressful. Sippy heats to exactly 60°C every time. No more guessing, no more burnt fingers. Absolute must-have!</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#3A7C5E;">A</div>
+          <div>
+            <div class="review-name">Ankit & Meera Joshi</div>
+            <div class="review-city">📍 Pune, Maharashtra</div>
+            <div class="review-badge">✅ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Took it on a Ladakh trip. Worked perfectly at high altitude where sockets are impossible to find. Had hot Maggi at 4500m! The build quality is outstanding.</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#5C3A7C;">V</div>
+          <div>
+            <div class="review-name">Vikram Singh</div>
+            <div class="review-city">📍 Delhi, NCR</div>
+            <div class="review-badge">✅ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">The 316 steel interior gives me so much confidence. I was always worried about BPA in plastic kettles. Sippy solved that completely. Packaging was also super premium!</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#C9503A;">D</div>
+          <div>
+            <div class="review-name">Deepika Menon</div>
+            <div class="review-city">📍 Chennai, Tamil Nadu</div>
+            <div class="review-badge">✅ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I'm a software engineer who works late nights. My office has no kitchen. Sippy sits on my desk and I get hot coffee whenever I want. Best desk accessory ever!</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#3A5C7C;">K</div>
+          <div>
+            <div class="review-name">Karthik Reddy</div>
+            <div class="review-city">📍 Hyderabad, Telangana</div>
+            <div class="review-badge">✅ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Ordered for my husband's birthday and he absolutely loves it! The cream colour looks so elegant. He takes it to office every day. Already recommended to 5 friends!</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#7C3A5C;">S</div>
+          <div>
+            <div class="review-name">Sneha Kulkarni</div>
+            <div class="review-city">📍 Kolkata, West Bengal</div>
+            <div class="review-badge">✅ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Delivery was super fast — 3 days to Jaipur! The unboxing experience was premium. Sippy itself is incredible. Temperature accuracy is spot on every single time.</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#5C7C3A;">M</div>
+          <div>
+            <div class="review-name">Mohammed Iqbal</div>
+            <div class="review-city">📍 Jaipur, Rajasthan</div>
+            <div class="review-badge">✅ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SUBMIT REVIEW -->
+<section class="submit-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">Share Your Experience</div>
+      <h2>Write a Review</h2>
+      <p>Bought Sippy? We'd love to hear what you think. Your review helps other customers make the right choice 💛</p>
+    </div>
+
+    <div class="review-form-wrap reveal" data-delay="100">
+      <div class="review-form-card" id="reviewFormCard">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="revName" placeholder="e.g. Priya Sharma" />
+          </div>
+          <div class="form-group">
+            <label>Your City *</label>
+            <input type="text" id="revCity" placeholder="e.g. Mumbai" />
+          </div>
+        </div>
+
+        <div class="form-group mt-24">
+          <label>Your Rating *</label>
+          <div class="star-picker" id="starPicker">
+            <span data-v="1">★</span>
+            <span data-v="2">★</span>
+            <span data-v="3">★</span>
+            <span data-v="4">★</span>
+            <span data-v="5">★</span>
+          </div>
+          <input type="hidden" id="revRating" value="0" />
+        </div>
+
+        <div class="form-group mt-24">
+          <label>Your Review *</label>
+          <textarea id="revText" rows="5" placeholder="Tell others about your experience with Sippy — what do you love most?"></textarea>
+          <span class="form-hint">Minimum 20 characters</span>
+        </div>
+
+        <div class="form-group mt-16">
+          <label>Order ID <span style="color:var(--muted);font-weight:400;">(optional — adds Verified badge)</span></label>
+          <input type="text" id="revOrder" placeholder="e.g. SPY-12345" />
+        </div>
+
+        <button class="btn btn-gold btn-lg w-full mt-32" onclick="submitReview()" id="submitBtn" style="justify-content:center;">
+          ⭐ Submit My Review
+        </button>
+
+        <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:12px;">
+          Reviews are verified before publishing. Usually live within 24 hours.
+        </p>
+
+      </div>
+
+      <!-- Success -->
+      <div class="success-state card" id="successState">
+        <span class="success-icon">🎉</span>
+        <h3>Thank You!</h3>
+        <p>Your review has been submitted successfully. We'll verify and publish it within 24 hours.</p>
+        <a href="../pages/product.html" class="btn btn-primary">View Product →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section style="background:var(--dark);padding:70px 0;text-align:center;">
+  <div class="container">
+    <h2 class="display reveal" style="color:white;font-size:clamp(28px,4vw,48px);margin-bottom:12px;">
+      Ready to join them?
+    </h2>
+    <p class="reveal" style="color:rgba(255,255,255,0.55);margin-top:12px;font-size:16px;" data-delay="80">
+      <s style="opacity:0.6;">₹7,999</s> ₹5,999 · Free Shipping · Use code <strong style="color:var(--gold);">SIPPY25</strong>
+    </p>
+    <a href="../pages/product.html" class="btn btn-gold btn-lg reveal mt-32" data-delay="160" style="margin-top:32px;">
+      Order Sippy Now →
+    </a>
+  </div>
+</section>
+
+<script src="../js/common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => injectNav('reviews'));
+
+  // ===== DUPLICATE CAROUSEL =====
+  const track = document.getElementById('carouselTrack');
+  track.innerHTML = track.innerHTML + track.innerHTML;
+
+  // ===== STAR PICKER =====
+  let selectedRating = 0;
+  const starSpans = document.querySelectorAll('#starPicker span');
+
+  starSpans.forEach((s, i) => {
+    s.addEventListener('mouseover', () => lightStars(i + 1));
+    s.addEventListener('mouseout',  () => lightStars(selectedRating));
+    s.addEventListener('click', () => {
+      selectedRating = i + 1;
+      document.getElementById('revRating').value = selectedRating;
+      lightStars(selectedRating);
+    });
+  });
+
+  function lightStars(n) {
+    starSpans.forEach((s, i) => s.classList.toggle('lit', i < n));
+  }
+
+  // ===== SUBMIT =====
+  function submitReview() {
+    const name   = document.getElementById('revName').value.trim();
+    const city   = document.getElementById('revCity').value.trim();
+    const rating = parseInt(document.getElementById('revRating').value);
+    const text   = document.getElementById('revText').value.trim();
+    const order  = document.getElementById('revOrder').value.trim();
+
+    if (!name)         { showToast('Please enter your name', 'error'); return; }
+    if (!city)         { showToast('Please enter your city', 'error'); return; }
+    if (rating === 0)  { showToast('Please select a star rating ⭐', 'error'); return; }
+    if (text.length < 20) { showToast('Review must be at least 20 characters', 'error'); return; }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = '⏳ Submitting…';
+
+    // Save to localStorage
+    const reviews = JSON.parse(localStorage.getItem('sippy_reviews') || '[]');
+    reviews.push({ name, city, rating, text, order, date: new Date().toLocaleDateString('en-IN') });
+    localStorage.setItem('sippy_reviews', JSON.stringify(reviews));
+
+    setTimeout(() => {
+      document.getElementById('reviewFormCard').style.display = 'none';
+      document.getElementById('successState').style.display  = 'block';
+    }, 800);
+  }
+</script>
+</body>
+</html>
