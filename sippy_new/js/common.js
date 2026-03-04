@@ -132,56 +132,233 @@ function injectFooter() {
   document.body.appendChild(footer);
 }
 
-// ===== AI CHATBOT =====
-const SIPPY_CONTEXT = `You are Sippy Assistant, a friendly and helpful customer support AI for Sippy — India's smartest rechargeable portable kettle.
-
-PRODUCT INFO:
-- Name: Sippy Smart Portable Kettle
-- Price: ₹7,999 (original) → ₹5,999 with promo code SIPPY25 (25% OFF)
-- Promo code: SIPPY25 — enter at checkout for 25% off
-- Capacity: 300mL
-- Temperature range: 45°C to 100°C
-- Display: LED temperature display (live reading)
-- Material: 316 Medical-Grade Stainless Steel interior, thermal insulation middle layer, ABS cool-touch outer shell
-- Charging: Wireless rechargeable via USB (like a phone)
-- No power socket needed — fully portable
-
-SHIPPING & DELIVERY:
-- FREE shipping all across India
-- Dispatched within 1-2 business days
-- Delivered in 4-7 working days
-- SMS tracking after dispatch
-
-PAYMENT:
-- Powered by Razorpay
-- Accepts UPI (PhonePe, GPay, Paytm), Credit/Debit Cards, Net Banking, Wallets, EMI
-
-RETURNS & WARRANTY:
-- 30-day satisfaction guarantee
-- Full refund if not happy, no questions asked
-- Manufacturing defects covered
-
-CONTACT:
-- Email: smartkettlestore@gmail.com
-- Phone/WhatsApp: +91 89856 56181
-- Hours: Mon-Sat, 9am-7pm IST
-
-HOW TO ORDER:
-1. Click Add to Cart
-2. Go to Cart
-3. Proceed to Checkout
-4. Fill delivery details
-5. Enter promo code SIPPY25 for 25% off
-6. Pay securely
-
-PERSONALITY:
-- Friendly, warm, helpful
-- Use emojis occasionally
-- Keep responses concise (2-4 sentences max)
-- Always mention promo code SIPPY25 when price is discussed
-- If you don't know something specific, direct them to contact support`;
-
+// ===== SMART CHATBOT =====
 let chatHistory = [];
+
+const SIPPY_AI = {
+  greet: [
+    "Hi! 👋 Welcome to Sippy! I'm your AI assistant. Ask me anything about our smart kettle!",
+    "Hello! 😊 Great to have you here! How can I help you with Sippy today?",
+    "Hey there! 👋 I'm Sippy's assistant. What would you like to know?"
+  ],
+  price: [
+    "Sippy is originally priced at ₹7,999 but with promo code **SIPPY25** you get 25% OFF — bringing it to just ₹5,999! 🎉
+
+✅ All taxes included
+✅ FREE shipping all India
+✅ No hidden charges
+
+Just enter SIPPY25 at checkout!",
+    "Great news! Use promo code **SIPPY25** at checkout for 25% off! 🏷️
+
+Original: ~~₹7,999~~ → You pay: ₹5,999
+
+FREE shipping included!"
+  ],
+  promo: [
+    "Your promo code is **SIPPY25** 🎉
+
+Enter it at checkout to get 25% OFF!
+
+₹7,999 → ₹5,999 (save ₹2,000!)
+
+Don't miss it — limited time offer! 🔥"
+  ],
+  product: [
+    "Sippy is India's smartest rechargeable portable kettle! 🫖
+
+⚡ 100% wireless — no socket needed
+🌡️ 45°C to 100°C temperature control
+📱 LED live temperature display
+🛡️ 316 Medical-Grade Stainless Steel
+💧 300mL — perfect cup every time
+
+Perfect for travel, office, home & outdoors!",
+  ],
+  material: [
+    "Sippy is built with 3 premium layers 🛡️
+
+🔩 Inner: 316 Medical-Grade Stainless Steel (same as surgical instruments!)
+🌡️ Middle: Thermal insulation layer
+🏠 Outer: Cool-touch ABS shell
+
+Your water NEVER touches plastic. 100% food safe!"
+  ],
+  temperature: [
+    "Sippy heats from 45°C to 100°C 🌡️
+
+Perfect for:
+☕ Coffee/Espresso: 95°C
+🍵 Green tea: 70°C
+🍼 Baby formula: 60°C
+🍜 Instant noodles: 100°C
+
+LED display shows live temperature in real time!"
+  ],
+  shipping: [
+    "Shipping is completely FREE all across India! 🚚
+
+📦 Dispatched: 1-2 business days
+🏠 Delivered: 4-7 working days
+📱 SMS tracking after dispatch
+🇮🇳 Available pan-India
+
+No extra charges — included in ₹5,999!"
+  ],
+  order: [
+    "Ordering Sippy is super easy! 🛒
+
+1️⃣ Click 'Add to Cart'
+2️⃣ Go to Cart & review
+3️⃣ Click 'Proceed to Checkout'
+4️⃣ Fill delivery details
+5️⃣ Enter code **SIPPY25** for 25% off!
+6️⃣ Pay securely via Razorpay
+
+Done in under 2 minutes! ⚡"
+  ],
+  payment: [
+    "We accept all major payment methods via Razorpay 💳
+
+• UPI (PhonePe, GPay, Paytm)
+• Credit & Debit Cards
+• Net Banking
+• Wallets
+• EMI options
+
+100% secure & encrypted. PCI DSS compliant! 🔒"
+  ],
+  returns: [
+    "We stand behind Sippy 100%! 💯
+
+🔄 30-day satisfaction guarantee
+💰 Full refund, no questions asked
+📦 Contact us within 30 days
+🔧 Manufacturing defects covered
+
+We want you to love your Sippy — if not, we'll make it right!"
+  ],
+  contact: [
+    "Our support team is always happy to help! 😊
+
+📧 smartkettlestore@gmail.com
+📞 +91 89856 56181
+💬 WhatsApp: wa.me/918985656181
+
+🕐 Mon-Sat, 9am-7pm IST
+⚡ Reply within 4-6 hours"
+  ],
+  cleaning: [
+    "Cleaning Sippy is super easy! 🧼
+
+✅ Rinse with warm water after use
+✅ Wide-mouth design for easy access
+✅ 316 steel resists stains & odours
+✅ Monthly: water + white vinegar for descaling
+
+⚠️ Don't submerge the base electronics!"
+  ],
+  battery: [
+    "Sippy charges just like your phone! ⚡
+
+🔌 Charges via USB cable
+🔋 Full charge in a few hours
+💧 Heats 300mL multiple times per charge
+
+Completely wireless — no socket needed anywhere!"
+  ],
+  compare: [
+    "Sippy stands out from regular kettles! 🏆
+
+✅ 100% wireless (no socket!)
+✅ 316 medical-grade steel
+✅ Precise temperature control
+✅ Compact & portable
+✅ LED live display
+
+Most kettles need a socket and give you no temperature control. Sippy gives you full freedom!"
+  ],
+  thanks: [
+    "You're welcome! 😊 Happy to help. Is there anything else you'd like to know about Sippy? 🫖",
+    "My pleasure! 🎉 Feel free to ask anything else!",
+    "Anytime! 😊 Let me know if you have more questions!"
+  ],
+  default: [
+    "I'm not sure about that, but our support team can help! 😊\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\n🕐 Mon-Sat, 9am-7pm IST\n\nOr ask me about pricing, features, shipping or offers!",
+    "That's beyond what I can answer right now! 🙏 Please reach out to our team:\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\nWe reply within 4-6 hours! ⚡",
+  ]
+};
+
+function getAIResponse(text) {
+  const t = text.toLowerCase();
+  
+  // Greetings
+  if (/^(hi|hello|hey|hii|helo|good morning|good afternoon|good evening|namaste|sup|what'?s up)/i.test(t.trim())) {
+    return rand(SIPPY_AI.greet);
+  }
+  // Thanks
+  if (t.includes('thank') || t.includes('thanks') || t.includes('thx') || t.includes('ty ')) {
+    return rand(SIPPY_AI.thanks);
+  }
+  // Promo code
+  if (t.includes('promo') || t.includes('coupon') || t.includes('discount') || t.includes('code') || t.includes('offer') || t.includes('sippy25')) {
+    return rand(SIPPY_AI.promo);
+  }
+  // Price
+  if (t.includes('price') || t.includes('cost') || t.includes('₹') || t.includes('rs') || t.includes('rupee') || t.includes('how much') || t.includes('costly') || t.includes('cheap') || t.includes('expensive')) {
+    return rand(SIPPY_AI.price);
+  }
+  // Battery/charging
+  if (t.includes('battery') || t.includes('charg') || t.includes('usb') || t.includes('power') || t.includes('electric')) {
+    return rand(SIPPY_AI.battery);
+  }
+  // Temperature
+  if (t.includes('temp') || t.includes('heat') || t.includes('degree') || t.includes('celsius') || t.includes('hot') || t.includes('boil') || t.includes('warm')) {
+    return rand(SIPPY_AI.temperature);
+  }
+  // Material/safety
+  if (t.includes('material') || t.includes('steel') || t.includes('safe') || t.includes('bpa') || t.includes('plastic') || t.includes('build') || t.includes('made of') || t.includes('quality')) {
+    return rand(SIPPY_AI.material);
+  }
+  // Shipping
+  if (t.includes('ship') || t.includes('deliver') || t.includes('dispatch') || t.includes('track') || t.includes('days') || t.includes('arrive') || t.includes('reach')) {
+    return rand(SIPPY_AI.shipping);
+  }
+  // Payment
+  if (t.includes('pay') || t.includes('upi') || t.includes('card') || t.includes('razorpay') || t.includes('gpay') || t.includes('phonepe') || t.includes('emi') || t.includes('net banking')) {
+    return rand(SIPPY_AI.payment);
+  }
+  // Order
+  if (t.includes('order') || t.includes('buy') || t.includes('purchase') || t.includes('cart') || t.includes('checkout') || t.includes('how to get')) {
+    return rand(SIPPY_AI.order);
+  }
+  // Returns
+  if (t.includes('return') || t.includes('refund') || t.includes('warranty') || t.includes('guarantee') || t.includes('replace') || t.includes('broken') || t.includes('damage')) {
+    return rand(SIPPY_AI.returns);
+  }
+  // Cleaning
+  if (t.includes('clean') || t.includes('wash') || t.includes('maintain') || t.includes('care')) {
+    return rand(SIPPY_AI.cleaning);
+  }
+  // Contact
+  if (t.includes('contact') || t.includes('support') || t.includes('help') || t.includes('phone') || t.includes('email') || t.includes('whatsapp') || t.includes('call')) {
+    return rand(SIPPY_AI.contact);
+  }
+  // Compare
+  if (t.includes('compar') || t.includes('better') || t.includes('vs') || t.includes('difference') || t.includes('why') || t.includes('worth')) {
+    return rand(SIPPY_AI.compare);
+  }
+  // Product info
+  if (t.includes('sippy') || t.includes('kettle') || t.includes('product') || t.includes('what is') || t.includes('tell me') || t.includes('about') || t.includes('feature') || t.includes('wireless')) {
+    return rand(SIPPY_AI.product);
+  }
+  
+  return rand(SIPPY_AI.default);
+}
+
+function rand(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 function injectChatbot() {
   const base = BASE_PATH;
@@ -194,7 +371,7 @@ function injectChatbot() {
   win.innerHTML = `
     <div class="chat-head">
       <div class="chat-av"><img src="${base}images/sippy-logo.png" alt="Sippy" style="width:32px;height:32px;object-fit:contain;border-radius:50%;" /></div>
-      <div><div class="chat-name">Sippy AI Assistant</div><div class="chat-online">● Powered by AI</div></div>
+      <div><div class="chat-name">Sippy AI Assistant</div><div class="chat-online">● Online now</div></div>
       <button class="chat-close" id="chatClose">✕</button>
     </div>
     <div class="chat-msgs" id="chatMsgs"></div>
@@ -207,12 +384,8 @@ function injectChatbot() {
 
   fab.addEventListener('click', () => {
     const isOpen = win.classList.contains('open');
-    if (!isOpen) {
-      resetChat();
-      win.classList.add('open');
-    } else {
-      win.classList.remove('open');
-    }
+    if (!isOpen) { resetChat(); win.classList.add('open'); }
+    else { win.classList.remove('open'); }
   });
   document.getElementById('chatClose').addEventListener('click', () => win.classList.remove('open'));
   document.getElementById('chatSend').addEventListener('click', sendChat);
@@ -223,10 +396,7 @@ function resetChat() {
   const msgs = document.getElementById('chatMsgs');
   if (!msgs) return;
   msgs.innerHTML = '';
-  chatHistory = [];
-  setTimeout(() => {
-    addBotMsg('Hi! 👋 I\'m Sippy\'s AI Assistant. Ask me anything about Sippy — pricing, features, shipping, or anything else! 🫖');
-  }, 200);
+  setTimeout(() => addBotMsg("Hi! 👋 I\'m Sippy\'s AI Assistant. Ask me anything about our smart kettle — price, features, shipping, offers, or anything else! 🫖"), 200);
 }
 
 function addBotMsg(text) {
@@ -250,65 +420,18 @@ function addUserMsg(text) {
   msgs.scrollTop = msgs.scrollHeight;
 }
 
-function addTypingIndicator() {
-  const msgs = document.getElementById('chatMsgs');
-  if (!msgs) return;
-  const d = document.createElement('div');
-  d.className = 'bot-msg typing-indicator';
-  d.id = 'typingIndicator';
-  d.textContent = '● ● ●';
-  d.style.cssText = 'opacity:0.5;font-size:18px;letter-spacing:4px;';
-  msgs.appendChild(d);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function removeTypingIndicator() {
-  const t = document.getElementById('typingIndicator');
-  if (t) t.remove();
-}
-
-async function sendChat() {
+function sendChat() {
   const inp = document.getElementById('chatIn');
   const txt = inp.value.trim();
   if (!txt) return;
   inp.value = '';
-  inp.disabled = true;
-  document.getElementById('chatSend').disabled = true;
-
   addUserMsg(txt);
-  chatHistory.push({ role: 'user', content: txt });
-  addTypingIndicator();
-
-  try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 300,
-        system: SIPPY_CONTEXT,
-        messages: chatHistory
-      })
-    });
-
-    const data = await response.json();
-    const reply = data.content?.[0]?.text || 'Sorry, I could not get a response. Please try again!';
-    
-    removeTypingIndicator();
-    addBotMsg(reply);
-    chatHistory.push({ role: 'assistant', content: reply });
-
-    // Keep history to last 10 messages to avoid token limits
-    if (chatHistory.length > 10) chatHistory = chatHistory.slice(-10);
-
-  } catch (err) {
-    removeTypingIndicator();
-    addBotMsg('Sorry, something went wrong! Please contact us at smartkettlestore@gmail.com or WhatsApp +91 89856 56181 😊');
-  }
-
-  inp.disabled = false;
-  document.getElementById('chatSend').disabled = false;
-  inp.focus();
+  
+  // Simulate typing delay for natural feel
+  setTimeout(() => {
+    const response = getAIResponse(txt);
+    addBotMsg(response);
+  }, 600 + Math.random() * 400);
 }
 
 // ===== SCROLL REVEAL =====
