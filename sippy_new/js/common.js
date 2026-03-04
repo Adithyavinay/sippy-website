@@ -132,69 +132,112 @@ function injectFooter() {
   document.body.appendChild(footer);
 }
 
-// ===== SMART CHATBOT =====
-let chatHistory = [];
-
-const SIPPY_AI = {
-  greet: [
-    "Hi! 👋 Welcome to Sippy! I'm your assistant. Ask me anything about our smart kettle!",
-    "Hello! 😊 Great to have you here! How can I help you with Sippy today?",
-    "Hey there! 👋 I'm Sippy's assistant. What would you like to know?"
-  ],
-  price: [
-    "Sippy is originally ₹7,999 but use promo code SIPPY25 for 25% OFF — just ₹5,999! 🎉\n\n✅ All taxes included\n✅ FREE shipping all India\n✅ No hidden charges\n\nEnter SIPPY25 at checkout!",
-    "Use promo code SIPPY25 at checkout for 25% off! 🏷️\n\nOriginal: ₹7,999 → You pay: ₹5,999 (save ₹2,000!)\n\nFREE shipping included!"
-  ],
-  promo: [
-    "Your promo code is SIPPY25 🎉\n\nEnter it at checkout to get 25% OFF!\n\n₹7,999 → ₹5,999 (save ₹2,000!)\n\nLimited time offer — don't miss it! 🔥"
-  ],
-  product: [
-    "Sippy is India's smartest rechargeable portable kettle! 🫖\n\n⚡ 100% wireless — no socket needed\n🌡️ 45°C to 100°C temperature control\n📱 LED live temperature display\n🛡️ 316 Medical-Grade Stainless Steel\n💧 300mL — perfect cup every time\n\nPerfect for travel, office, home & outdoors!"
-  ],
-  material: [
-    "Sippy is built with 3 premium layers 🛡️\n\n🔩 Inner: 316 Medical-Grade Stainless Steel\n🌡️ Middle: Thermal insulation layer\n🏠 Outer: Cool-touch ABS shell\n\nYour water NEVER touches plastic. 100% food safe!"
-  ],
-  temperature: [
-    "Sippy heats from 45°C to 100°C 🌡️\n\nPerfect for:\n☕ Coffee/Espresso: 95°C\n🍵 Green tea: 70°C\n🍼 Baby formula: 60°C\n🍜 Instant noodles: 100°C\n\nLED display shows live temperature in real time!"
-  ],
-  shipping: [
-    "Shipping is completely FREE all across India! 🚚\n\n📦 Dispatched: 1-2 business days\n🏠 Delivered: 4-7 working days\n📱 SMS tracking after dispatch\n\nNo extra charges — included in ₹5,999!"
-  ],
-  order: [
-    "Ordering Sippy is super easy! 🛒\n\n1️⃣ Click Add to Cart\n2️⃣ Go to Cart & review\n3️⃣ Click Proceed to Checkout\n4️⃣ Fill delivery details\n5️⃣ Enter code SIPPY25 for 25% off!\n6️⃣ Pay securely via Razorpay\n\nDone in under 2 minutes! ⚡"
-  ],
-  payment: [
-    "We accept all major payment methods via Razorpay 💳\n\n• UPI (PhonePe, GPay, Paytm)\n• Credit & Debit Cards\n• Net Banking\n• Wallets\n• EMI options\n\n100% secure & encrypted! 🔒"
-  ],
-  returns: [
-    "We stand behind Sippy 100%! 💯\n\n🔄 30-day satisfaction guarantee\n💰 Full refund, no questions asked\n📦 Contact us within 30 days\n\nWe want you to love your Sippy — if not, we'll make it right!"
-  ],
-  contact: [
-    "Our support team is always happy to help! 😊\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\n🕐 Mon-Sat, 9am-7pm IST\n⚡ Reply within 4-6 hours"
-  ],
-  cleaning: [
-    "Cleaning Sippy is super easy! 🧼\n\n✅ Rinse with warm water after use\n✅ Wide-mouth design for easy access\n✅ 316 steel resists stains & odours\n✅ Monthly: water + white vinegar for descaling\n\n⚠️ Don't submerge the base electronics!"
-  ],
-  battery: [
-    "Sippy charges just like your phone! ⚡\n\n🔌 Charges via USB cable\n🔋 Full charge in a few hours\n💧 Heats 300mL multiple times per charge\n\nCompletely wireless — no socket needed anywhere!"
-  ],
-  compare: [
-    "Sippy stands out from regular kettles! 🏆\n\n✅ 100% wireless (no socket!)\n✅ 316 medical-grade steel\n✅ Precise temperature control\n✅ Compact & portable\n✅ LED live display\n\nMost kettles need a socket and give no temperature control. Sippy gives you full freedom!"
-  ],
-  thanks: [
-    "You're welcome! 😊 Is there anything else you'd like to know about Sippy? 🫖",
-    "My pleasure! 🎉 Feel free to ask anything else!",
-    "Anytime! 😊 Let me know if you have more questions!"
-  ],
-  default: [
-    "I'm not sure about that, but our support team can help! 😊\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\n🕐 Mon-Sat, 9am-7pm IST",
-    "That's beyond what I can answer! 🙏 Please reach out to our team:\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\nWe reply within 4-6 hours! ⚡"
-  ]
+// ===== INJECT CHATBOT =====
+// ===== CHATBOT =====
+const CHAT_FLOWS = {
+  main: {
+    msg: 'Hi! 👋 Welcome to Sippy. What would you like to know?',
+    options: [
+      { label: '🫖 What is Sippy?', next: 'about' },
+      { label: '💰 Price & Offers', next: 'price' },
+      { label: '🛒 How to Order', next: 'order' },
+      { label: '🚚 Shipping & Delivery', next: 'shipping' },
+      { label: '🔬 Materials & Build', next: 'material' },
+      { label: '🌡️ Temperature & Features', next: 'features' },
+      { label: '↩️ Returns & Warranty', next: 'returns' },
+      { label: '📞 Contact Support', next: 'contact' },
+    ]
+  },
+  about: {
+    msg: 'Sippy is India\'s smartest rechargeable portable kettle 🫖\n\nIt heats 300mL of water wirelessly — no power socket needed! Made with 316 medical-grade stainless steel, LED temperature control from 45°C to 100°C, and a cool-touch ABS outer shell.\n\nPerfect for travel, office, home & outdoors.',
+    options: [
+      { label: '💰 What\'s the price?', next: 'price' },
+      { label: '🔬 What\'s it made of?', next: 'material' },
+      { label: '🌡️ Temperature features', next: 'features' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  price: {
+    msg: 'Sippy is priced at just ₹5,999 🎉\n\n✅ All taxes included\n✅ FREE shipping all across India\n✅ No hidden charges\n✅ 30-day satisfaction guarantee\n\nOne flat price — what you see is what you pay.',
+    options: [
+      { label: '🛒 How do I order?', next: 'order' },
+      { label: '💳 Payment options?', next: 'payment' },
+      { label: '↩️ Returns policy?', next: 'returns' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  order: {
+    msg: 'Ordering Sippy is super easy! 🛒\n\n1️⃣ Click "Add to Cart" on any page\n2️⃣ Go to your Cart and review your order\n3️⃣ Click "Proceed to Checkout"\n4️⃣ Fill in your delivery details\n5️⃣ Pay securely via Razorpay\n\nTakes under 2 minutes — and it\'s on its way!',
+    options: [
+      { label: '💳 Payment options?', next: 'payment' },
+      { label: '🚚 Shipping info?', next: 'shipping' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  payment: {
+    msg: 'We accept all major payment methods via Razorpay 💳\n\n• UPI (PhonePe, GPay, Paytm)\n• Credit & Debit Cards\n• Net Banking\n• Wallets\n• EMI options\n\nAll payments are 100% secure and encrypted. PCI DSS compliant.',
+    options: [
+      { label: '🚚 Shipping details?', next: 'shipping' },
+      { label: '↩️ Return policy?', next: 'returns' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  shipping: {
+    msg: 'FREE shipping pan-India! 🚚\n\n📦 Dispatched within 1–2 business days\n🏠 Delivered in 4–7 working days\n📱 SMS tracking after dispatch\n🇮🇳 Available all across India\n\nNo extra charges. Free delivery is included in ₹5,999.',
+    options: [
+      { label: '📍 Can you track order?', next: 'tracking' },
+      { label: '↩️ Returns & warranty?', next: 'returns' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  tracking: {
+    msg: 'Once your order is dispatched (1–2 business days), you\'ll receive an SMS with your tracking link 📦\n\nYou can also reach out to us anytime for a quick update on your order status.',
+    options: [
+      { label: '📞 Get order update', next: 'contact' },
+      { label: '↩️ Returns policy?', next: 'returns' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  material: {
+    msg: 'Sippy is built with 3 premium layers 🛡️\n\n🔩 Inner: 316 Medical-Grade Stainless Steel\n   — same grade used in surgical instruments. Zero rust, zero leaching.\n\n🌡️ Middle: Thermal insulation layer\n   — keeps water hot longer, outer cool to touch.\n\n🏠 Outer: Food-safe ABS plastic shell\n   — cool-touch even at 100°C inside.\n\nYour water NEVER touches plastic.',
+    options: [
+      { label: '🌡️ Temperature range?', next: 'features' },
+      { label: '🧼 How to clean it?', next: 'cleaning' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  features: {
+    msg: 'Sippy heats from 45°C to 100°C (full boil) 🌡️\n\nLED display shows live temperature in real time. Perfect for:\n• Green tea: 70°C\n• Coffee / Espresso: 95°C\n• Baby formula: 60°C\n• Instant noodles: 100°C\n\n⚡ 100% wireless & rechargeable\n📱 Charges via USB — like your phone\n🏷️ 300mL — perfect cup every time',
+    options: [
+      { label: '🔬 What\'s it made of?', next: 'material' },
+      { label: '💰 How much does it cost?', next: 'price' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  cleaning: {
+    msg: 'Cleaning Sippy is effortless 🧼\n\n✅ Rinse with warm water after each use\n✅ Wide-mouth design for easy access\n✅ Polished 316 steel resists stains & odours\n✅ For descaling: water + white vinegar monthly\n\n⚠️ Do NOT submerge the base electronics unit.',
+    options: [
+      { label: '↩️ Return policy?', next: 'returns' },
+      { label: '📞 Need more help?', next: 'contact' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  returns: {
+    msg: 'We stand behind Sippy 100% 💯\n\n🔄 30-day satisfaction guarantee\n📦 Not happy? Contact us within 30 days\n💰 Full refund, no questions asked\n🔧 Manufacturing defects covered\n\nWe want you to love your Sippy — if not, we\'ll make it right.',
+    options: [
+      { label: '🛒 Ready to order!', next: 'order' },
+      { label: '📞 Contact for return', next: 'contact' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  },
+  contact: {
+    msg: 'Our support team is always happy to help! 😊\n\n📧 smartkettlestore@gmail.com\n📞 +91 89856 56181\n💬 WhatsApp: wa.me/918985656181\n\n🕐 Available Mon–Sat, 9am–7pm IST\n⚡ We reply within 4–6 hours',
+    options: [
+      { label: '🛒 Place an order', next: 'order' },
+      { label: '🏠 Back to main menu', next: 'main' },
+    ]
+  }
 };
-
-function rand(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 function injectChatbot() {
   const base = BASE_PATH;
@@ -207,21 +250,26 @@ function injectChatbot() {
   win.innerHTML = `
     <div class="chat-head">
       <div class="chat-av"><img src="${base}images/sippy-logo.png" alt="Sippy" style="width:32px;height:32px;object-fit:contain;border-radius:50%;" /></div>
-      <div><div class="chat-name">Sippy AI Assistant</div><div class="chat-online">● Online now</div></div>
+      <div><div class="chat-name">Sippy Assistant</div><div class="chat-online">● Online now</div></div>
       <button class="chat-close" id="chatClose">✕</button>
     </div>
     <div class="chat-msgs" id="chatMsgs"></div>
     <div class="chat-input-row">
-      <input type="text" id="chatIn" placeholder="Ask me anything about Sippy…" />
+      <input type="text" id="chatIn" placeholder="Type a message…" />
       <button class="chat-send" id="chatSend">➤</button>
     </div>
   `;
   document.body.appendChild(win);
 
+  // Toggle: always reset on open
   fab.addEventListener('click', () => {
     const isOpen = win.classList.contains('open');
-    if (!isOpen) { resetChat(); win.classList.add('open'); }
-    else { win.classList.remove('open'); }
+    if (!isOpen) {
+      resetChat();
+      win.classList.add('open');
+    } else {
+      win.classList.remove('open');
+    }
   });
   document.getElementById('chatClose').addEventListener('click', () => win.classList.remove('open'));
   document.getElementById('chatSend').addEventListener('click', sendChat);
@@ -232,7 +280,14 @@ function resetChat() {
   const msgs = document.getElementById('chatMsgs');
   if (!msgs) return;
   msgs.innerHTML = '';
-  setTimeout(() => addBotMsg("Hi! 👋 I\'m Sippy\'s AI Assistant. Ask me anything about our smart kettle — price, features, shipping, offers, or anything else! 🫖"), 200);
+  setTimeout(() => showChatFlow('main'), 200);
+}
+
+function showChatFlow(key) {
+  const flow = CHAT_FLOWS[key];
+  if (!flow) return;
+  addBotMsg(flow.msg);
+  setTimeout(() => addMenuButtons(flow.options), 400);
 }
 
 function addBotMsg(text) {
@@ -256,18 +311,57 @@ function addUserMsg(text) {
   msgs.scrollTop = msgs.scrollHeight;
 }
 
+function addMenuButtons(options) {
+  const msgs = document.getElementById('chatMsgs');
+  if (!msgs) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'qr-wrap';
+  wrap.id = 'currentMenu';
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'qr-btn';
+    btn.textContent = opt.label;
+    btn.addEventListener('click', () => {
+      wrap.remove();
+      addUserMsg(opt.label);
+      setTimeout(() => showChatFlow(opt.next), 350);
+    });
+    wrap.appendChild(btn);
+  });
+  msgs.appendChild(wrap);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function addMsg(text, who) {
+  if (who === 'user') addUserMsg(text);
+  else addBotMsg(text);
+}
+
 function sendChat() {
   const inp = document.getElementById('chatIn');
   const txt = inp.value.trim();
   if (!txt) return;
   inp.value = '';
+  // Remove current menu
+  const menu = document.getElementById('currentMenu');
+  if (menu) menu.remove();
   addUserMsg(txt);
-  
-  // Simulate typing delay for natural feel
-  setTimeout(() => {
-    const response = getAIResponse(txt);
-    addBotMsg(response);
-  }, 600 + Math.random() * 400);
+  // Simple keyword match
+  const low = txt.toLowerCase();
+  let matched = null;
+  if (low.includes('price') || low.includes('cost') || low.includes('much') || low.includes('₹')) matched = 'price';
+  else if (low.includes('order') || low.includes('buy') || low.includes('cart') || low.includes('purchase')) matched = 'order';
+  else if (low.includes('ship') || low.includes('deliver') || low.includes('dispatch')) matched = 'shipping';
+  else if (low.includes('material') || low.includes('steel') || low.includes('safe') || low.includes('build')) matched = 'material';
+  else if (low.includes('temp') || low.includes('heat') || low.includes('wireless') || low.includes('feature') || low.includes('battery')) matched = 'features';
+  else if (low.includes('return') || low.includes('refund') || low.includes('warrant') || low.includes('guarantee')) matched = 'returns';
+  else if (low.includes('contact') || low.includes('support') || low.includes('help') || low.includes('phone') || low.includes('email') || low.includes('whatsapp')) matched = 'contact';
+  else if (low.includes('clean') || low.includes('wash')) matched = 'cleaning';
+  else if (low.includes('track') || low.includes('status') || low.includes('where')) matched = 'tracking';
+  else if (low.includes('payment') || low.includes('upi') || low.includes('card') || low.includes('razorpay')) matched = 'payment';
+  else if (low.includes('what is') || low.includes('about') || low.includes('sippy')) matched = 'about';
+  else matched = 'main';
+  setTimeout(() => showChatFlow(matched), 350);
 }
 
 // ===== SCROLL REVEAL =====
