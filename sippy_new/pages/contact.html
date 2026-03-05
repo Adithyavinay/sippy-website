@@ -197,14 +197,16 @@ async function submitContact() {
   btnText.textContent = '⏳ Sending…';
 
   // ── Build payload for Web3Forms ──
-  var payload = {
+var payload = {
     access_key:    WEB3FORMS_KEY,
     subject:       'New Sippy Enquiry [' + subject + '] from ' + name,
     from_name:     'Sippy Website',
-
-    // replyto enables auto-reply to the customer automatically
-    replyto:       email,
-
+    reply_to:      email,
+    from_email:    email,
+    botcheck:      '',
+    // Auto reply to customer
+    autoresponse_subject: 'We received your message — Sippy Support',
+    autoresponse_message: 'Hi ' + name + ',\n\nThank you for contacting Sippy! We have received your message and will get back to you within 4-6 hours.\n\nYour Message: ' + message + '\n\nBest regards,\nTeam Sippy\nsmartkettle store@gmail.com\n+91 89856 56181',
     // ── Main message body (shown in the store owner's email) ──
     message:
       'NEW CONTACT FORM SUBMISSION\n' +
