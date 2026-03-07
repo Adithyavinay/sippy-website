@@ -38,12 +38,13 @@ function injectNav(activePage) {
         <img src="${base}images/sippy-logo.png" alt="Sippy" class="nav-logo-img" />
         Sippy<span>.</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="${base}index.html" class="${activePage==='home'?'active':''}">Home</a></li>
-        <li><a href="${base}pages/product.html" class="${activePage==='product'?'active':''}">Product</a></li>
-        <li><a href="${base}pages/gallery.html" class="${activePage==='gallery'?'active':''}">Gallery</a></li>
-        <li><a href="${base}pages/contact.html" class="${activePage==='contact'?'active':''}">Contact</a></li>
-      </ul>
+<ul class="nav-links">
+  <li><a href="${base}index.html" class="${activePage==='home'?'active':''}">Home</a></li>
+  <li><a href="${base}pages/product.html" class="${activePage==='product'?'active':''}">Product</a></li>
+  <li><a href="${base}pages/gallery.html" class="${activePage==='gallery'?'active':''}">Gallery</a></li>
+  <li><a href="${base}pages/our-story.html" class="${activePage==='ourstory'?'active':''}">Our Story</a></li>
+  <li><a href="${base}pages/contact.html" class="${activePage==='contact'?'active':''}">Contact</a></li>
+</ul>
       <a href="${base}pages/cart.html" class="btn btn-primary btn-sm nav-cta" style="position:relative;">
         🛒 Cart <span id="navCartBadge" style="background:var(--gold);color:#fff;font-size:11px;font-weight:800;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;position:absolute;top:-8px;right:-8px;"></span>
       </a>
@@ -53,6 +54,7 @@ function injectNav(activePage) {
       <a href="${base}index.html">Home</a>
       <a href="${base}pages/product.html">Product</a>
       <a href="${base}pages/gallery.html">Gallery</a>
+      <a href="${base}pages/our-story.html">Our Story</a>
       <a href="${base}pages/contact.html">Contact</a>
       <a href="${base}pages/cart.html" style="color:var(--gold);font-weight:700;">🛒 View Cart</a>
     </div>
