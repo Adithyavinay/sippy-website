@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Story — Sippy</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D88G42HS1W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D88G42HS1W');
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark:    #1C1410;
+      --gold:    #C9923A;
+      --gold-lt: #F5E6C8;
+      --cream:   #FAF6F0;
+      --warm:    #EDE0CE;
+      --muted:   #9A8472;
+      --text:    #2E1F0F;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: var(--dark);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 60px;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Lora', serif;
+      font-size: 22px; font-weight: 700;
+      color: #fff; letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--dark) !important;
+      padding: 8px 20px; border-radius: 2px;
+      font-weight: 600 !important;
+      color: var(--dark);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 60px;
+      background: var(--dark);
+      padding: 100px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 60px;
+      background: var(--cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative; z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--gold); opacity: 0.5;
+    }
+    .hero-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 17px; font-weight: 300; line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px; margin: 0 auto;
+    }
+
+    /* ── SECTIONS ── */
+    .page { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── OPENING QUOTE ── */
+    .opening {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .opening-quote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(22px, 3.5vw, 32px);
+      line-height: 1.6;
+      color: var(--dark);
+      font-weight: 400;
+      max-width: 680px;
+      margin: 0 auto 24px;
+    }
+    .opening-quote strong {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .opening-attr {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex; align-items: center; gap: 16px;
+      margin: 0 0 60px;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--warm); }
+    .divider-dot {
+      width: 8px; height: 8px;
+      background: var(--gold); border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── STORY BLOCKS ── */
+    .story-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--warm);
+    }
+    .story-block:last-of-type { border-bottom: none; }
+    .story-block.flip { direction: rtl; }
+    .story-block.flip > * { direction: ltr; }
+
+    .story-text {}
+    .story-num {
+      font-family: 'Lora', serif;
+      font-size: 72px; font-weight: 700;
+      color: var(--warm);
+      line-height: 1;
+      margin-bottom: -8px;
+    }
+    .story-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .story-heading {
+      font-family: 'Lora', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700; line-height: 1.25;
+      color: var(--dark);
+      margin-bottom: 18px;
+    }
+    .story-heading em { font-style: italic; color: var(--gold); }
+    .story-body {
+      font-size: 15.5px; font-weight: 300;
+      line-height: 1.85; color: #5A3E2B;
+    }
+    .story-body p + p { margin-top: 14px; }
+    .story-body strong { font-weight: 600; color: var(--dark); }
+
+    .story-visual {
+      background: var(--dark);
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-visual::before {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,146,58,0.15) 0%, transparent 70%);
+      top: -40px; right: -40px;
+    }
+    .visual-icon {
+      font-size: 52px;
+      line-height: 1;
+    }
+    .visual-caption {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .visual-caption strong {
+      display: block;
+      font-style: normal;
+      font-size: 22px; font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    /* ── VALUES ── */
+    .values-section {
+      padding: 80px 0;
+      background: var(--dark);
+      margin: 0 -32px;
+      padding-left: 32px; padding-right: 32px;
+    }
+    .values-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .values-eyebrow {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .values-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700; color: #fff;
+    }
+    .values-title em { font-style: italic; color: var(--gold); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .value-card {
+      padding: 36px 28px;
+      background: rgba(255,255,255,0.03);
+      border-top: 2px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .value-card:hover {
+      border-color: var(--gold);
+      background: rgba(201,146,58,0.06);
+    }
+    .value-icon {
+      font-size: 28px; margin-bottom: 16px; display: block;
+    }
+    .value-name {
+      font-family: 'Lora', serif;
+      font-size: 18px; font-weight: 700;
+      color: #fff; margin-bottom: 10px;
+    }
+    .value-desc {
+      font-size: 13.5px; font-weight: 300;
+      line-height: 1.7; color: rgba(255,255,255,0.45);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-section { padding: 80px 0; }
+    .timeline-header { text-align: center; margin-bottom: 56px; }
+    .timeline-eyebrow {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .timeline-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700; color: var(--dark);
+    }
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--warm));
+    }
+    .timeline-item {
+      position: relative;
+      padding: 0 0 44px 40px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -7px; top: 6px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+    .timeline-period {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .timeline-event {
+      font-family: 'Lora', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--dark); margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .timeline-detail {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.75; color: #7A5A3C;
+    }
+
+    /* ── CLOSING CTA ── */
+    .closing {
+      background: var(--gold-lt);
+      border-top: 3px solid var(--gold);
+      padding: 72px 32px;
+      text-align: center;
+      margin: 0 -32px;
+    }
+    .closing-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700; line-height: 1.3;
+      color: var(--dark); margin-bottom: 16px;
+    }
+    .closing-title em { font-style: italic; color: var(--gold); }
+    .closing-sub {
+      font-size: 16px; font-weight: 300;
+      line-height: 1.7; color: #7A5A3C;
+      max-width: 480px; margin: 0 auto 36px;
+    }
+    .closing-btn {
+      display: inline-block;
+      background: var(--dark);
+      color: var(--gold);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 16px 40px; border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .closing-btn:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+    }
+    footer a {
+      font-size: 12px; color: var(--gold);
+      text-decoration: none; letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 70px 24px 60px; }
+      .page { padding: 0 20px; }
+      .story-block { grid-template-columns: 1fr; gap: 32px; }
+      .story-block.flip { direction: ltr; }
+      .values-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">Sippy<span>.</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/pages/our-story.html">Our Story</a>
+    <a href="/pages/contact.html">Contact</a>
+    <a href="/#buy" class="nav-cta">Buy Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Our Story</div>
+    <h1 class="hero-title">
+      Built from a <em>real problem.</em><br>Made for real life.
+    </h1>
+    <p class="hero-sub">
+      Sippy didn't start in a boardroom. It started with a bad cup of hotel coffee,
+      a train journey through Hyderabad, and one simple question —
+      why can't hot water just come with me?
+    </p>
+  </div>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="page">
+
+  <!-- Opening quote -->
+  <div class="opening">
+    <p class="opening-quote">
+      "I was tired of depending on a socket, a canteen, or someone else
+      just to get a hot drink. I wanted something that was
+      <strong>mine, portable, and it just worked.</strong>"
+    </p>
+    <p class="opening-attr">— Founder, Sippy India · Hyderabad</p>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Story Block 1 -->
+  <div class="story-block">
+    <div class="story-text">
+      <div class="story-num">01</div>
+      <div class="story-label">The Problem</div>
+      <h2 class="story-heading">A kettle that only works<br>when <em>plugged in</em>?</h2>
+      <div class="story-body">
+        <p>
+          Anyone who has stayed in a hostel, traveled by train overnight, or spent long
+          hours at a desk knows the struggle. You want hot water — for tea, for instant
+          noodles, for a warm drink at 2 AM — and there's just no easy way to get it.
+        </p>
+        <p>
+          Hotel rooms don't always have kettles. Canteens close early.
+          The pantry car is four bogies away. And those plastic travel mugs?
+          They barely hold heat, let alone <strong>boil water.</strong>
+        </p>
+        <p>
+          That was our everyday reality in Hyderabad. And we knew we weren't alone.
+        </p>
+      </div>
+    </div>
+    <div class="story-visual">
+      <div class="visual-icon">🔌</div>
+      <div class="visual-caption">
+        <strong>The Old Way</strong>
+        Find a socket. Find a kettle.<br>Hope the voltage works.
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Block 2 -->
+  <div class="story-block flip">
+    <div class="story-text">
+      <div class="story-num">02</div>
+      <div class="story-label">The Search</div>
+      <h2 class="story-heading">We looked everywhere.<br><em>Nothing fit.</em></h2>
+      <div class="story-body">
+        <p>
+          We searched for a portable kettle that was actually portable — not just a
+          smaller version of the same corded appliance. We wanted something rechargeable,
+          genuinely wireless, food-safe, and compact enough to go in a backpack.
+        </p>
+        <p>
+          The international options were expensive and not designed for Indian travel needs.
+          The cheap ones online were plastic, poorly made, and nowhere near safe.
+        </p>
+        <p>
+          So we thought — <strong>why not build one ourselves?</strong>
+          One that Indians would actually trust and use every single day.
+        </p>
+      </div>
+    </div>
+    <div class="story-visual">
+      <div class="visual-icon">🔍</div>
+      <div class="visual-caption">
+        <strong>12+ Months</strong>
+        of research, sampling,<br>and testing products
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Block 3 -->
+  <div class="story-block">
+    <div class="story-text">
+      <div class="story-num">03</div>
+      <div class="story-label">The Solution</div>
+      <h2 class="story-heading">Meet <em>Sippy.</em><br>Hot water. Anywhere.</h2>
+      <div class="story-body">
+        <p>
+          After months of sampling, testing, and going back and forth with manufacturers,
+          we landed on the Sippy Smart Kettle — a 300ml, USB-C rechargeable, wireless kettle
+          made from 316 food-grade stainless steel.
+        </p>
+        <p>
+          No cord. No socket. No dependency. Just charge it, fill it, and have
+          hot water wherever you are — on a train, in a hostel room, at your desk,
+          or on a trek.
+        </p>
+        <p>
+          <strong>Rs. 5,999. Free delivery. Made for India.</strong>
+        </p>
+      </div>
+    </div>
+    <div class="story-visual">
+      <div class="visual-icon">☕</div>
+      <div class="visual-caption">
+        <strong>Sippy Smart Kettle</strong>
+        300ml · USB-C · 316 SS<br>Wireless · Food Grade
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Block 4 -->
+  <div class="story-block flip">
+    <div class="story-text">
+      <div class="story-num">04</div>
+      <div class="story-label">Who It's For</div>
+      <h2 class="story-heading">For everyone who<br>is <em>always on the move.</em></h2>
+      <div class="story-body">
+        <p>
+          The student in a PG who wants tea at midnight without waking the whole house.
+          The consultant who lives in hotel rooms Monday to Friday.
+          The parent at a hospital who just needs something warm.
+          The traveller who treats every train journey like a small adventure.
+        </p>
+        <p>
+          Sippy is for the <strong>chai lovers, the coffee drinkers, the instant noodle people</strong> —
+          and everyone in between who deserves hot water on their own terms.
+        </p>
+        <p>
+          We're a small team from Hyderabad. We're not a big brand.
+          But we built something we're genuinely proud of — and something we use ourselves, every day.
+        </p>
+      </div>
+    </div>
+    <div class="story-visual">
+      <div class="visual-icon">🇮🇳</div>
+      <div class="visual-caption">
+        <strong>Made for India</strong>
+        From hostels to hotels,<br>trains to treks
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- VALUES -->
+<div class="page">
+  <div class="values-section">
+    <div class="values-header">
+      <div class="values-eyebrow">What We Stand For</div>
+      <h2 class="values-title">Our <em>values</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <span class="value-icon">🛡</span>
+        <div class="value-name">Safety First</div>
+        <div class="value-desc">316 food-grade stainless steel. No plastic in contact with water. No cutting corners on what goes into your body.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">♻️</span>
+        <div class="value-name">Built to Last</div>
+        <div class="value-desc">We don't want you buying a new kettle every year. Sippy is made to be used hard, carried everywhere, and last for years.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🤝</span>
+        <div class="value-name">Honest Pricing</div>
+        <div class="value-desc">Rs. 5,999 — no hidden charges, no fake MRP markups. Just a fair price for something that genuinely works.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">📦</span>
+        <div class="value-name">Free Delivery</div>
+        <div class="value-desc">Pan-India free delivery on every order. Because the price you see should be the price you pay. Full stop.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">💬</span>
+        <div class="value-name">Real Support</div>
+        <div class="value-desc">When you write to us, a real person replies. We're a small team and we actually care about every single customer.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🌱</span>
+        <div class="value-name">Small & Proud</div>
+        <div class="value-desc">We're not a corporation. We're a small Hyderabad-based brand trying to do one thing really well. That's enough for us.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="page">
+  <div class="timeline-section">
+    <div class="timeline-header">
+      <div class="timeline-eyebrow">How We Got Here</div>
+      <h2 class="timeline-title">The Sippy journey</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">The Beginning</div>
+        <div class="timeline-event">The problem hits home</div>
+        <div class="timeline-detail">Stuck on a long train journey out of Hyderabad with no way to get hot water, the seed of Sippy was planted. A simple frustration that turned into a year-long obsession.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Research Phase</div>
+        <div class="timeline-event">Months of searching, sampling, testing</div>
+        <div class="timeline-detail">We tested over a dozen products from different manufacturers. Most failed on safety, quality, or real-world usability. We kept going until we found something we'd actually be proud to sell.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Product Locked</div>
+        <div class="timeline-event">The Sippy Smart Kettle is born</div>
+        <div class="timeline-detail">316 food-grade stainless steel. USB-C rechargeable. 300ml capacity. Wireless. Compact enough for any bag. We had found it — and it was exactly what we were looking for.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Launch</div>
+        <div class="timeline-event">sippy.store goes live</div>
+        <div class="timeline-detail">We launched with one product, one mission, and a lot of heart. Free delivery pan-India. Real customer support. And a price that makes sense — Rs. 5,999.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Now & Beyond</div>
+        <div class="timeline-event">Growing, one happy customer at a time</div>
+        <div class="timeline-detail">Every order means someone chose to trust us. We don't take that lightly. We're working every day to make Sippy better — in product, in service, and in every sip that follows.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Closing CTA -->
+  <div class="closing">
+    <h2 class="closing-title">Ready to carry <em>hot water</em><br>wherever you go?</h2>
+    <p class="closing-sub">
+      Join thousands of travellers, students, and everyday chai lovers
+      who've made Sippy part of their daily routine.
+    </p>
+    <a href="https://sippy.store" class="closing-btn">
+      Shop Sippy &nbsp;·&nbsp; <s style="opacity:0.5; font-weight:400;">Rs. 7,999</s> &nbsp;<strong>Rs. 5,999</strong>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Sippy India. Made with ♥ in Hyderabad.</p>
+  <a href="mailto:smartkettlestore@gmail.com">smartkettlestore@gmail.com</a>
+</footer>
+
+</body>
+</html>
