@@ -251,9 +251,9 @@
             <div class="cart-item-name">Sippy Smart Portable Kettle</div>
             <div class="cart-item-variant">Cream / Ivory · 300mL · Wireless Rechargeable</div>
             <div class="cart-item-price">
-  <span style="font-size:14px;color:#999;text-decoration:line-through;font-weight:500;">₹${(UNIT_PRICE * cart.qty).toLocaleString('en-IN')}</span>
+  <span style="font-size:14px;color:#999;text-decoration:line-through;font-weight:500;">₹${(7999 * cart.qty).toLocaleString('en-IN')}</span>
   <span style="background:#22C55E;color:#fff;font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;margin-left:4px;">25% OFF</span>
-  <br/>₹${(5999 * cart.qty).toLocaleString('en-IN')}
+  <br/>₹${(UNIT_PRICE * cart.qty).toLocaleString('en-IN')}
 </div>
 <div class="cart-item-price-sub">Use code <strong>SIPPY25</strong> at checkout · Free shipping</div>
             <div class="qty-row">
@@ -275,7 +275,6 @@
   function updateSummary(qty) {
     const total = UNIT_PRICE * qty;
     document.getElementById('summaryQty').textContent = qty;
-    document.getElementById('summaryItemPrice').textContent = '₹' + (UNIT_PRICE).toLocaleString('en-IN');
     document.getElementById('summaryTotal').textContent = qty > 0 ? '₹' + total.toLocaleString('en-IN') : '₹0';
   }
 
