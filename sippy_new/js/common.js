@@ -100,6 +100,7 @@ function injectFooter() {
             <li><a href="${base}index.html">Home</a></li>
             <li><a href="${base}pages/product.html">Product</a></li>
             <li><a href="${base}pages/gallery.html">Gallery</a></li>
+            <li><a href="${base}pages/our-story.html">Our Story</a></li>
             <li><a href="${base}pages/checkout.html">Order Now</a></li>
           </ul>
         </div>
