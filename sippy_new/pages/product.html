@@ -8,13 +8,127 @@
   <link rel="stylesheet" href="../css/global.css" />
   <link rel="stylesheet" href="../css/product.css" />
   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D88G42HS1W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-D88G42HS1W');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D88G42HS1W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D88G42HS1W');
+  </script>
+  <style>
+    /* ── VIDEO TESTIMONIALS ── */
+    .vid-testimonials {
+      padding: 80px 0;
+      background: #F5EFE6;
+    }
+    .vt-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .vt-header h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      color: #1C1410;
+      margin-bottom: 10px;
+    }
+    .vt-header p {
+      color: #9A8472;
+      font-size: 16px;
+    }
+    .vt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 52px;
+    }
+    .vt-card {
+      background: #fff;
+      border: 1px solid #E8DDD0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .vt-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.14);
+    }
+    .vt-video-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #1C1410;
+      overflow: hidden;
+    }
+    .vt-video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .vt-info {
+      padding: 22px 24px 26px;
+    }
+    .vt-stars {
+      color: #F59E0B;
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .vt-quote {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #5A3E2B;
+      font-style: italic;
+      padding-left: 14px;
+      border-left: 3px solid #F5E6C8;
+      margin-bottom: 16px;
+    }
+    .vt-reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .vt-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: #C9923A;
+      color: #fff;
+      font-size: 15px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .vt-name {
+      font-size: 14px; font-weight: 700;
+      color: #1C1410;
+    }
+    .vt-city {
+      font-size: 12px;
+      color: #9A8472;
+      margin-top: 2px;
+    }
+    .vt-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 28px 0 0;
+      border-top: 1px solid #E8DDD0;
+      flex-wrap: wrap;
+    }
+    .vt-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #3D2B1A;
+    }
+    .vt-trust-item span { font-size: 20px; }
+    @media (max-width: 768px) {
+      .vt-grid { grid-template-columns: 1fr; gap: 24px; }
+      .vt-trust { gap: 20px; }
+    }
+  </style>
 </head>
 <body>
 <script>document.addEventListener('DOMContentLoaded',()=>injectNav('product'));</script>
@@ -62,10 +176,10 @@
         <h1 class="prod-title">Sippy</h1>
         <p class="prod-subtitle">Rechargeable Smart Portable Kettle</p>
         <div class="prod-price-row">
-         <span style="font-size:16px;color:#999;text-decoration:line-through;font-weight:500;">₹7,999</span>
-<span class="prod-price" style="margin-left:8px;">₹5,999</span>
-<span style="background:#22C55E;color:#fff;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px;">25% OFF</span>
-<br/><span class="prod-price-note">Incl. all taxes · Free shipping · Use code <strong>SIPPY25</strong></span>
+          <span style="font-size:16px;color:#999;text-decoration:line-through;font-weight:500;">₹7,999</span>
+          <span class="prod-price" style="margin-left:8px;">₹5,999</span>
+          <span style="background:#22C55E;color:#fff;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px;">25% OFF</span>
+          <br/><span class="prod-price-note">Incl. all taxes · Free shipping · Use code <strong>SIPPY25</strong></span>
         </div>
 
         <div class="prod-highlights">
@@ -90,6 +204,76 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- VIDEO TESTIMONIALS -->
+<section class="vid-testimonials">
+  <div class="container">
+
+    <div class="vt-header reveal">
+      <div class="label" style="justify-content:center;">Real Customers</div>
+      <h2>See Sippy in Action</h2>
+      <p>Don't just take our word for it — watch real customers share their experience 🎥</p>
+    </div>
+
+    <div class="vt-grid">
+
+      <!-- Video 1 — Mrudula, Maharashtra -->
+      <div class="vt-card reveal">
+        <div class="vt-video-wrap">
+          <iframe
+            src="https://drive.google.com/file/d/1uUWI2fO996tTa580DKwwQ_Q1XYDQSTbI/preview"
+            allow="autoplay"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="vt-info">
+          <div class="vt-stars">★★★★★</div>
+          <p class="vt-quote">"Exactly what I needed for travel. Hot water anywhere, anytime — no socket needed!"</p>
+          <div class="vt-reviewer">
+            <div class="vt-avatar">M</div>
+            <div>
+              <div class="vt-name">Mrudula</div>
+              <div class="vt-city">📍 Maharashtra · Verified Purchase ✅</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2 — Ashish, Odisha -->
+      <div class="vt-card reveal" data-delay="150">
+        <div class="vt-video-wrap">
+          <iframe
+            src="https://drive.google.com/file/d/1eZPrUJk8hr1hqXEjQLGO8W_3dbJ-gMev/preview"
+            allow="autoplay"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="vt-info">
+          <div class="vt-stars">★★★★★</div>
+          <p class="vt-quote">"The build quality is incredible. 316 steel, no plastic smell — my chai tastes perfect every time!"</p>
+          <div class="vt-reviewer">
+            <div class="vt-avatar" style="background:#1A4A6B;">A</div>
+            <div>
+              <div class="vt-name">Ashish</div>
+              <div class="vt-city">📍 Odisha · Verified Purchase ✅</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="vt-trust reveal">
+      <div class="vt-trust-item"><span>⭐</span> 4.9/5 Average Rating</div>
+      <div class="vt-trust-item"><span>👥</span> 100+ Happy Customers</div>
+      <div class="vt-trust-item"><span>🇮🇳</span> Shipped Pan India</div>
+      <div class="vt-trust-item"><span>↩️</span> 30-Day Returns</div>
+    </div>
+
   </div>
 </section>
 
