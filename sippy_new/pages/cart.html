@@ -180,8 +180,8 @@
       <div>
         <div class="cart-summary-card" id="cartSummary">
           <div class="cs-title">Order Summary</div>
-         <div class="cs-line"><span>Sippy Smart Portable Kettle</span><span id="summaryItemPrice"><s style="color:#999;font-size:13px;">₹7,999</s> <span style="color:var(--gold);font-weight:700;">₹5,999*</span></span></div>
-<div class="cs-line" style="font-size:12px;color:#22C55E;font-weight:600;"><span>🎟️ Apply code SIPPY25 at checkout for 25% off!</span></div>
+          <div class="cs-line"><span>Sippy Smart Portable Kettle</span><span id="summaryItemPrice" style="color:var(--gold);font-weight:700;">₹7,999</span></div>
+
           <div class="cs-line"><span>Quantity</span><span id="summaryQty">1</span></div>
           <div class="cs-line"><span>Shipping</span><span class="free-tag">FREE</span></div>
           <div class="cs-line"><span>Taxes</span><span>Included</span></div>
@@ -250,12 +250,8 @@
           <div class="cart-item-info">
             <div class="cart-item-name">Sippy Smart Portable Kettle</div>
             <div class="cart-item-variant">Cream / Ivory · 300mL · Wireless Rechargeable</div>
-            <div class="cart-item-price">
-  <span style="font-size:14px;color:#999;text-decoration:line-through;font-weight:500;">₹${(7999 * cart.qty).toLocaleString('en-IN')}</span>
-  <span style="background:#22C55E;color:#fff;font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;margin-left:4px;">25% OFF</span>
-  <br/>₹${(UNIT_PRICE * cart.qty).toLocaleString('en-IN')}
-</div>
-<div class="cart-item-price-sub">Use code <strong>SIPPY25</strong> at checkout · Free shipping</div>
+            <div class="cart-item-price">₹${(UNIT_PRICE * cart.qty).toLocaleString('en-IN')}</div>
+<div class="cart-item-price-sub">Free shipping · All taxes included</div>
             <div class="qty-row">
               <button class="qty-btn" onclick="changeQty(-1)">−</button>
               <span class="qty-val" id="qtyVal">${cart.qty}</span>
