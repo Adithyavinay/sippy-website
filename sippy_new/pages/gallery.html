@@ -19,7 +19,7 @@
 <body>
 <script>document.addEventListener('DOMContentLoaded',()=>injectNav('gallery'));</script>
 
-<div class="page-hero" style="background-image: linear-gradient(135deg, rgba(28,20,16,0.82) 0%, rgba(58,43,32,0.88) 100%), url('../images/product-main.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; position:relative; min-height: 320px;">
+<div class="page-hero" style="background: linear-gradient(135deg, rgba(28,20,16,0.82) 0%, rgba(58,43,32,0.88) 100%), url('../images/product-main.jpeg') center/cover no-repeat; position:relative;">
   <div class="container">
     <div class="label">Gallery</div>
     <h1>See Sippy in Every Light</h1>
@@ -85,6 +85,22 @@
         <div class="gal-item-overlay">
           <h4>LED Smart Display</h4>
           <p>Live temperature readout</p>
+          <span class="gal-zoom">⊕ View</span>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-delay="320" onclick="openLightbox('../images/mcu-control.jpg','MCU Temperature Control — Smart chip controls heating precisely from 45°C to 100°C')">
+        <img src="../images/mcu-control.jpg" alt="MCU Temperature Control" />
+        <div class="gal-item-overlay">
+          <h4>MCU Temperature Control</h4>
+          <p>Smart chip precision heating</p>
+          <span class="gal-zoom">⊕ View</span>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-delay="400" onclick="openLightbox('../images/product-parameters.jpg','Product Dimensions — Compact 300mL design built for travel and everyday use')">
+        <img src="../images/product-parameters.jpg" alt="Product Dimensions" />
+        <div class="gal-item-overlay">
+          <h4>Product Dimensions</h4>
+          <p>Compact design built for travel</p>
           <span class="gal-zoom">⊕ View</span>
         </div>
       </div>
