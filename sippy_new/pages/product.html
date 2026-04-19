@@ -223,6 +223,16 @@
         <div class="badge" style="margin-bottom:16px;">🇮🇳 Available in India</div>
         <h1 class="prod-title">Sippy</h1>
         <p class="prod-subtitle">Rechargeable Smart Portable Kettle</p>
+
+        <!-- OUT OF STOCK BANNER -->
+        <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:22px;">😔</span>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:#991B1B;">Currently Out of Stock</div>
+            <div style="font-size:12px;color:#B91C1C;margin-top:2px;">We sold out fast! Next batch coming soon. Notify me below.</div>
+          </div>
+        </div>
+
         <div class="prod-price-row">
           <span style="font-size:16px;color:#999;text-decoration:line-through;font-weight:500;">₹7,999</span>
           <span class="prod-price" style="margin-left:8px;">₹5,999</span>
@@ -240,9 +250,8 @@
         </div>
 
         <div class="prod-actions">
-          <button onclick="addToCart(1);" class="btn btn-gold btn-lg w-full" style="justify-content:center;">Add to Cart — ₹5,999</button>
-          <a href="cart.html" class="btn btn-outline w-full" style="justify-content:center;margin-top:12px;">🛒 View Cart →</a>
-          <a href="https://wa.me/918985656181" target="_blank" class="btn btn-outline w-full" style="justify-content:center;margin-top:12px;color:#25D366;border-color:#25D366;">💬 Order via WhatsApp</a>
+          <button disabled class="btn btn-lg w-full" style="justify-content:center;background:#E5E7EB;color:#9CA3AF;cursor:not-allowed;border:none;">❌ Out of Stock</button>
+          <a href="https://wa.me/918985656181?text=Hi!%20I%20want%20to%20be%20notified%20when%20Sippy%20is%20back%20in%20stock!" target="_blank" class="btn btn-outline w-full" style="justify-content:center;margin-top:12px;color:#25D366;border-color:#25D366;">💬 Notify Me on WhatsApp</a>
         </div>
 
         <div class="prod-trust-row">
@@ -438,9 +447,9 @@
 <!-- BOTTOM CTA -->
 <section class="prod-cta-section">
   <div class="container text-center">
-    <h2 class="reveal" style="color:white;font-size:clamp(32px,5vw,56px);">Ready to try Sippy?</h2>
-    <p class="reveal text-muted" data-delay="80" style="color:rgba(255,255,255,0.55);margin-top:12px;font-size:16px;"><s style="opacity:0.6;">₹7,999</s> ₹5,999 · Free shipping · Use code <strong>SIPPY25</strong></p>
-    <button onclick="addToCart(1); window.location.href='cart.html';" class="btn btn-gold btn-lg mt-32 reveal" data-delay="160">Add to Cart →</button>
+    <h2 class="reveal" style="color:white;font-size:clamp(32px,5vw,56px);">Sold Out — But Coming Back! 🔥</h2>
+    <p class="reveal" data-delay="80" style="color:rgba(255,255,255,0.55);margin-top:12px;font-size:16px;">We sold out faster than expected. Next batch coming soon!</p>
+    <a href="https://wa.me/918985656181?text=Hi!%20I%20want%20to%20be%20notified%20when%20Sippy%20is%20back%20in%20stock!" target="_blank" class="btn btn-gold btn-lg mt-32 reveal" data-delay="160">💬 Notify Me on WhatsApp →</a>
   </div>
 </section>
 
